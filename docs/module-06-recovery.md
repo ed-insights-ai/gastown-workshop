@@ -60,13 +60,13 @@ These require manual action:
 
 ```bash
 # Diagnose
-gt polecat list --rig YOUR_RIG    # see status
-gt peek Toast                      # see what it's outputting (or not)
-gt feed                            # check recent activity
+gt polecat list YOUR_RIG            # see status (positional, no --rig flag)
+gt peek YOUR_RIG/furiosa            # full address: rig/name
+gt feed                             # check recent activity
 
 # If it's genuinely stuck (not just slow):
-gt polecat nuke Toast              # destroy it
-gt sling <bead-id> YOUR_RIG        # re-sling the bead
+gt polecat nuke furiosa             # destroy it (use actual polecat name)
+gt sling <bead-id> YOUR_RIG         # re-sling the bead
 ```
 
 **How to tell "stuck" from "slow":** `gt peek Toast` shows no output for 10+ minutes, and the bead has been `in_progress` for an unusually long time. Agents working on complex tasks can be quiet for 3-5 minutes. Quiet for 15+ is concerning.
@@ -219,8 +219,8 @@ When something seems wrong:
 ```
 1. gt status
    ↓ (see overall health)
-2. gt polecat list --rig YOUR_RIG
-   ↓ (see what's running)
+2. gt polecat list YOUR_RIG
+   ↓ (see what's running — positional arg, no --rig)
 3. gt convoy list
    ↓ (see what's in flight)
 4. gt feed (or gt log)
@@ -267,8 +267,8 @@ This is why **clear, self-contained bead descriptions** matter so much. If the d
 ```bash
 # Diagnosis
 gt status                              # overall health
-gt polecat list --rig YOUR_RIG        # active polecats
-gt peek <name>                         # polecat output
+gt polecat list YOUR_RIG               # active polecats (positional, no --rig)
+gt peek YOUR_RIG/polecat-name          # polecat output (full address required)
 gt feed                                # real-time activity
 gt orphans                             # beads with dead owners
 gt convoy stranded                     # stalled convoys

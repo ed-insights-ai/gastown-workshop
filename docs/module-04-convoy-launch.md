@@ -2,6 +2,8 @@
 
 > **Goal:** Use the proper `gt convoy stage → launch` flow. Understand what staging gives you that direct slinging doesn't.
 
+> **All commands run from:** `~/gt/YOUR_RIG/crew/claudio`
+
 ---
 
 ## The Problem with Slinging Directly
@@ -96,7 +98,7 @@ bd dep add edi-009 edi-007   # integration test needs full wired app
 
 ## Create an Epic to Stage
 
-For `gt convoy stage` to compute waves, it helps to have a parent epic:
+For `gt convoy stage` to compute waves, you need a parent epic that owns all the work:
 
 ```bash
 bd create "weatherly MVP" \
@@ -106,9 +108,8 @@ bd create "weatherly MVP" \
 
 Note ID: `edi-000`
 
-Then make everything a child of the epic:
+Then make everything a child of the epic using `--type parent-child`:
 ```bash
-# Add parent relationships
 bd dep add edi-000 edi-002 --type parent-child
 bd dep add edi-000 edi-003 --type parent-child
 bd dep add edi-000 edi-004 --type parent-child
@@ -119,7 +120,11 @@ bd dep add edi-000 edi-008 --type parent-child
 bd dep add edi-000 edi-009 --type parent-child
 ```
 
-> Note: `parent-child` is organizational (hierarchy only). It does NOT create execution blocking. Only `blocks`-type deps affect dispatch ordering.
+> 💡 **`parent-child` vs `blocks`:** These are completely different relationship types.
+> - `parent-child` = organizational hierarchy only. Does **not** affect execution order.
+> - `blocks` (default) = execution blocker. Blocked bead cannot start until blocker closes.
+>
+> The wave computation uses **only** `blocks`-type deps. Parent-child is just for grouping and display.
 
 ---
 
@@ -207,8 +212,11 @@ gt convoy status hq-cv-wxyz
 # Real-time feed
 gt feed
 
-# Who's running
-gt polecat list --rig YOUR_RIG
+# Who's running (positional arg, not --rig flag)
+gt polecat list YOUR_RIG
+
+# Peek at a specific polecat (full address required)
+gt peek YOUR_RIG/furiosa
 
 # Rig-level view
 gt rig status YOUR_RIG

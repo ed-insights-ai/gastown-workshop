@@ -2,6 +2,8 @@
 
 > **Goal:** Create two beads where B can't start until A finishes. Understand how Gas Town enforces ordering without you managing it.
 
+> **All commands run from:** `~/gt/YOUR_RIG/crew/claudio`
+
 ---
 
 ## The Problem Dependency Chains Solve
@@ -123,7 +125,7 @@ bd ready          # edi-003 should NOT appear here — it's blocked
 ## Step 4: Create the Convoy
 
 ```bash
-gt convoy create "weatherly data layer" edi-002 edi-003 --notify --human
+gt convoy create "weatherly data layer" edi-002 edi-003 --notify
 ```
 
 This tracks both beads. When both close, the convoy lands.
@@ -171,6 +173,8 @@ gt sling edi-002 YOUR_RIG_NAME
 Watch it work:
 ```bash
 gt feed
+gt polecat list YOUR_RIG_NAME     # see which polecat picked it up
+gt peek YOUR_RIG_NAME/furiosa     # use the actual polecat name from above
 gt convoy status hq-cv-xyz
 ```
 

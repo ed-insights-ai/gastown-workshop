@@ -35,6 +35,7 @@ You'll build **weatherly** — a CLI weather dashboard in Python. It's small eno
 
 | Module | Topic | Concept |
 |--------|-------|---------|
+| [Setup](docs/setup.md) | Get your town running | `gt up`, rig setup, crew workspace |
 | [0. Mental Model](docs/module-00-mental-model.md) | How Gas Town thinks | Agents, beads, convoys, molecules |
 | [1. First Bead](docs/module-01-first-bead.md) | Create → sling → done | The core loop |
 | [2. Dependency Chain](docs/module-02-dependency-chain.md) | B needs A | Sequential work |
@@ -45,22 +46,28 @@ You'll build **weatherly** — a CLI weather dashboard in Python. It's small eno
 
 ## Prerequisites
 
-- Gas Town installed and configured (`gt doctor` shows green)
-- A rig set up (`gt rig list` shows at least one)
-- Claude Code authenticated
+- Gas Town installed (`gt --version` works)
 - `bd` and `gt` CLIs in your PATH
+- Claude Code authenticated (`claude --version` works)
+- A rig configured (`gt rig list` shows at least one)
 
 ## Quick Start
 
 ```bash
-# 1. Check your setup
-gt doctor
+# 1. Go to your Gas Town root
+cd ~/gt
+
+# 2. Bring up all services
+gt up
+
+# 3. Verify everything is running
 gt status
 
-# 2. Start at module 0
-open docs/module-00-mental-model.md
+# 4. Start with Setup
 ```
+
+**→ [Start with Setup →](docs/setup.md)**
 
 ---
 
-> 💡 **Tip:** Each module has a `## Try It` section with exact commands to run. Do them. Gas Town only makes sense when you watch it move.
+> 💡 **Tip:** Each module has step-by-step commands to run. **Do them.** Gas Town only makes sense when you watch it move — reading without doing is half the value.

@@ -40,7 +40,8 @@ bd close <id> --continue        # close + advance molecule step
 gt convoy stage <epic-id>        # validate dep graph + wave plan (INERT)
 gt convoy launch <convoy-id>     # dispatch Wave 1, daemon feeds rest
 
-gt convoy create "Name" edi-abc edi-def --notify --human
+gt convoy create "Name" edi-abc edi-def --notify   # --notify alone = notify mayor/
+                                                    # --notify addr = notify specific address
 gt convoy status hq-cv-abc
 gt convoy list                   # active
 gt convoy list --all             # include landed
@@ -52,8 +53,8 @@ gt convoy stranded               # work queued, nothing running
 ```bash
 gt sling <bead-id> <rig>                     # assign to polecat
 gt sling <bead-id> <rig> --model claude-sonnet
-gt polecat list --rig <rig>                  # active polecats
-gt peek <name>                               # see polecat output
+gt polecat list <rig>                        # active polecats (POSITIONAL, no --rig flag)
+gt peek <rig>/<name>                         # see polecat output (FULL ADDRESS required)
 gt polecat nuke <name>                       # destroy polecat
 ```
 

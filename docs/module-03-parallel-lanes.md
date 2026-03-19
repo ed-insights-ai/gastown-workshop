@@ -2,6 +2,8 @@
 
 > **Goal:** Sling multiple independent beads simultaneously and watch them execute in parallel. Understand wave computation and when parallelism is safe.
 
+> **All commands run from:** `~/gt/YOUR_RIG/crew/claudio`
+
 ---
 
 ## The Problem: Sequential Work is Slow
@@ -160,7 +162,7 @@ bd ready           # edi-004, edi-005, edi-006 appear; edi-007 does NOT
 
 ```bash
 gt convoy create "weatherly full implementation" \
-  edi-004 edi-005 edi-006 edi-007 --notify --human
+  edi-004 edi-005 edi-006 edi-007 --notify
 ```
 
 Now stage to see the wave computation:
@@ -207,15 +209,16 @@ This dispatches **all three Wave 1 beads simultaneously**.
 ## Step 6: Watch Three Polecats Work in Parallel
 
 ```bash
-gt polecat list --rig YOUR_RIG_NAME
+gt polecat list YOUR_RIG_NAME
 ```
 
 ```
-POLECAT     STATUS    BEAD      TITLE
-Toast       Working   edi-004   Add weather fetcher
-Furiosa     Working   edi-005   Add terminal display
-Nux         Working   edi-006   Add CLI argument parser
+● YOUR_RIG/furiosa  working   edi-004   Add weather fetcher
+● YOUR_RIG/nux      working   edi-005   Add terminal display
+● YOUR_RIG/slit     working   edi-006   Add CLI argument parser
 ```
+
+> 💡 **Polecat names come from a themed pool** (Mad Max universe by default: furiosa, nux, slit, etc.). You don't choose them — Gas Town allocates from the pool. Check available themes with `gt namepool themes`.
 
 Three polecats, three git worktrees, three Claude sessions — all running simultaneously.
 
@@ -225,15 +228,20 @@ gt feed
 ```
 
 ```
-[20:45:11] Toast    → in_progress (edi-004)
-[20:45:12] Furiosa  → in_progress (edi-005)
-[20:45:12] Nux      → in_progress (edi-006)
+[20:45:11] furiosa  → in_progress (edi-004)
+[20:45:12] nux      → in_progress (edi-005)
+[20:45:12] slit     → in_progress (edi-006)
 ... (parallel work happening) ...
-[20:47:33] Toast    closed edi-004 ✓
-[20:47:41] Furiosa  closed edi-005 ✓
-[20:47:58] Nux      closed edi-006 ✓
+[20:47:33] furiosa  closed edi-004 ✓
+[20:47:41] nux      closed edi-005 ✓
+[20:47:58] slit     closed edi-006 ✓
 [20:47:59] ConvoyManager: edi-007 unblocked → slinging to YOUR_RIG
-[20:48:00] Slit     hooked edi-007: Wire weatherly together
+[20:48:00] chrome   hooked edi-007: Wire weatherly together
+```
+
+Peek at any one of them while they're working:
+```bash
+gt peek YOUR_RIG/furiosa    # use full rig/name address
 ```
 
 The three completed in roughly the same timeframe (parallelism!), and edi-007 dispatched automatically the moment all its blockers closed.

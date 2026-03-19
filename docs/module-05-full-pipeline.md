@@ -80,14 +80,22 @@ A polecat can't do this — it's ephemeral and headless. A crew session is persi
 ## Step 1: Start (or Attach to) Your Crew Session
 
 ```bash
-# If your crew session isn't running
+# Start the session (creates a tmux window with Claude Code running inside)
 gt crew start claudio
 
 # Attach your terminal to it
 gt crew at claudio
 ```
 
+> 💡 **`gt crew start` vs `gt crew at`:**
+> - `start` creates a new tmux session with Claude Code running inside it
+> - `at` attaches your terminal to an already-running session
+>
+> After `gt crew start`, you'll see a Claude Code session open. This is your crew agent — it has already run `gt prime` and knows its identity as `YOUR_RIG/crew/claudio`.
+
 You're now inside the crew session. Your identity: `YOUR_RIG/crew/claudio`. Working directory: `~/gt/YOUR_RIG/crew/claudio/`.
+
+> 💡 **The crew session is interactive.** Unlike polecats (which run headless), crew sessions are attached to your terminal. The formula workflows have dialogue steps that require your input — you'll read the output and respond directly in the session.
 
 ---
 
@@ -112,11 +120,15 @@ You should see `spec-workflow`, `plan-workflow`, `beads-workflow`, and the expan
 
 We're going to add a **v2 feature**: add a 5-day forecast to weatherly.
 
+**From your terminal** (not from inside the crew session — sling TO the crew session):
 ```bash
+cd ~/gt
 gt sling spec-workflow YOUR_RIG/crew/claudio \
   --var feature="5-day-forecast" \
   --var brief="Add a 5-day weather forecast to weatherly. Show each day's high/low temps, precipitation probability, and conditions. Display in the same terminal-friendly format as current weather."
 ```
+
+> ⚠️ **Where to run this:** Run `gt sling` from `~/gt` in a separate terminal window. The crew session receives the sling and starts working. Then `gt crew at claudio` to attach and interact with the running workflow.
 
 This slinging kicks off a molecule in your crew session. Because you're in the crew session, you'll see it start immediately (Propulsion Principle).
 
