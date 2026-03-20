@@ -4,7 +4,29 @@
 
 ---
 
-## 1. Verify the Basics
+## 1. Enable Gas Town & Install Shell Integration
+
+This is a one-time step. Without it, `GT_ROOT` and `GT_RIG` won't be set when you `cd` into a crew workspace, and commands like `gt formula list` won't work from inside your rig directories.
+
+```bash
+cd ~/gt
+gt enable
+gt shell install
+source ~/.zshrc    # activate immediately (or open a new terminal)
+```
+
+Verify shell integration is active:
+```bash
+cd ~/gt/YOUR_RIG/crew/claudio
+echo $GT_ROOT     # should show ~/gt
+echo $GT_RIG      # should show your rig name
+```
+
+If those are empty, the shell hook didn't take — try opening a fresh terminal and `cd`-ing back in.
+
+---
+
+## 2. Verify the Basics
 
 All Gas Town commands must run from inside your town root (`~/gt`) or a crew/polecat workspace inside it. Running from your project repo (`~/source/...`) won't work.
 
@@ -22,7 +44,7 @@ Warnings about custom types, stale PIDs, routing mode — ignore those for now.
 
 ---
 
-## 2. Bring Up All Services
+## 3. Bring Up All Services
 
 ```bash
 cd ~/gt
@@ -44,7 +66,7 @@ Expected output:
 
 ---
 
-## 3. Check Your Status
+## 4. Check Your Status
 
 ```bash
 gt status
@@ -70,7 +92,7 @@ Services: daemon (PID 38014)  dolt (:3307)  tmux (7 sessions)
 
 ---
 
-## 4. Find Your Rig Name
+## 5. Find Your Rig Name
 
 ```bash
 gt rig list
@@ -87,7 +109,7 @@ You'll see something like:
 
 ---
 
-## 5. Set Up a Crew Workspace (Optional but Recommended)
+## 6. Set Up a Crew Workspace (Optional but Recommended)
 
 For Modules 1-4, you can run `bd create` from any directory *inside* your town. The easiest place is your crew workspace:
 
@@ -106,7 +128,7 @@ cd ~/gt/YOUR_RIG/crew/claudio
 
 ---
 
-## 6. Fix the Dolt Fingerprint (If Needed)
+## 7. Fix the Dolt Fingerprint (If Needed)
 
 If `bd create` fails with:
 ```
@@ -128,7 +150,7 @@ Then try `bd create` again.
 
 ---
 
-## 7. Confirm Everything Works
+## 8. Confirm Everything Works
 
 ```bash
 cd ~/gt/YOUR_RIG/crew/claudio
@@ -139,7 +161,7 @@ You should get a list of open beads (possibly some pre-existing ones — that's 
 
 ---
 
-## 8. Verify Native Formulas Are Available
+## 9. Verify Native Formulas Are Available
 
 Gas Town ships with the formulas used in this workshop — no extra installation needed.
 
@@ -162,8 +184,10 @@ These are the native Gas Town formulas used in Module 5. If they're missing, you
 
 ## ✅ You're Ready When:
 
+- [ ] `gt enable` + `gt shell install` done, `source ~/.zshrc` run
+- [ ] `cd ~/gt/YOUR_RIG/crew/claudio && echo $GT_ROOT` shows `~/gt`
 - [ ] `gt status` shows Witness + Refinery running for your rig
-- [ ] `cd ~/gt/YOUR_RIG/crew/claudio && bd ready` runs without errors
+- [ ] `bd ready` runs without errors from the crew directory
 - [ ] You know your rig name from `gt rig list`
 - [ ] `gt formula list` shows `mol-idea-to-plan` and `shiny`
 
