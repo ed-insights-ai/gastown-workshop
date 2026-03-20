@@ -158,13 +158,15 @@ Reply with numbered answers.
 gt mail send edinsights_ui/claudio \
   --subject "Re: PRD Questions: weatherly 5-day forecast" \
   --reply-to <message-id-from-inbox> \
-  --message "1. (b) Stacked blocks
+  --stdin << 'EOF'
+1. (b) Stacked blocks, one per day
 2. (a) Today + 4 future days
-3. (a) Maximum hourly value
-4. (b) Show current THEN forecast
+3. (a) Maximum hourly value (worst-case)
+4. (b) Show current weather THEN forecast below
 5. (a) Use whatever wttr.in supports
 6-10. Accept recommendations.
-Proceed."
+Proceed to plan generation.
+EOF
 
 gt nudge edinsights_ui/claudio "Answers sent. Proceed with plan generation."
 ```
@@ -214,9 +216,11 @@ Reply: APPROVE / APPROVE WITH NOTES / REVISE
 gt mail send edinsights_ui/claudio \
   --subject "Re: Plan Ready for Approval: weatherly 5-day forecast" \
   --reply-to <message-id> \
-  --message "APPROVE
+  --stdin << 'EOF'
+APPROVE
 
-Proceed to bead creation."
+Proceed to bead creation.
+EOF
 
 gt nudge edinsights_ui/claudio "Approved. Create the beads."
 ```
@@ -381,7 +385,9 @@ gt mail read 1                          # read the message
 gt mail send edinsights_ui/claudio \
   --subject "Re: ..." \
   --reply-to <message-id> \
-  --message "your answers"
+  --stdin << 'EOF'
+your answers here
+EOF
 gt nudge edinsights_ui/claudio "..."    # wake the crew agent to continue
 
 # After bead creation
