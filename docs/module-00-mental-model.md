@@ -226,4 +226,4 @@ Answers: *(1) Sandbox = git worktree, persists; Session = Claude instance, ephem
 
 ---
 
-## Next: [Module 1 — Your First Bead →](module-01-first-bead.md)
+## Next: [Module 1 — Idea to Beads →](module-01-idea-to-beads.md)
