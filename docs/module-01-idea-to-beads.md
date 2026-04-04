@@ -65,41 +65,16 @@ A brief answers: what, for who, and what does success look like. No implementati
 
 > ⚡ **What to expect:** The plugin doesn't just write a file — it interviews you. Expect 3–5 exchanges where it asks about your motivation, scope, constraints, and success criteria. It synthesizes your answers into a structured brief, then asks you to approve before writing.
 
-### What the conversation looks like
+### What the conversation feels like
 
-Here's a condensed version of what the `brief` interaction looks like in practice:
+The plugin's output isn't deterministic — it adapts to what you say. But the *shape* of the conversation is consistent. Here's roughly how it goes:
 
-```
-⏺ You've given me a terse phrase. Before I start asking structured questions,
-  give me the brain-dump:
-  - What moment sparked this?
-  - When you say "dashboard" — quick glance or something richer?
-  - "No config" — auto-detect location? Or reads from somewhere?
+1. **Brain dump** — it asks you to describe the idea in your own words. What sparked it, what you're picturing, what "no config" means to you.
+2. **Clarifying questions** — it identifies gaps: what happens with no arguments? What about units? What's explicitly *not* in v1?
+3. **Scope fences** — it confirms what's in and what's out, so the brief has clear boundaries.
+4. **Draft and review** — it writes a structured brief and asks if you're happy before saving.
 
-❯ I want something command line I can just easily run and get the weather
-  fast and easy. Something like:
-
-  $ weatherly dallas
-  Dallas, TX — 72°F, Partly Cloudy
-  Feels like 69°F · Wind 12mph SE · Humidity 48%
-
-  Forecast:
-    Today     Partly cloudy, high 78°F
-    Tonight   Clear, low 58°F
-    Tomorrow  Sunny, high 82°F
-
-⏺ That example nails it. A few targeted gaps:
-  1. No argument behavior? Auto-detect from IP or error with usage help?
-  2. Units? Fahrenheit only, or auto-detect from locale?
-  3. Scope fences for v1?
-
-❯ No argument → location detect. Default Fahrenheit, --celsius flag.
-  V1: just the basics I described.
-
-⏺ Here's the draft: [writes docs/product-brief.md]
-```
-
-Notice the flow: **brain dump → clarifying questions → scope fences → draft → approval**. The plugin is doing product thinking with you, not for you. Every answer you give becomes a constraint that shapes decisions downstream.
+Your exact questions will differ, but the flow is always: **your idea → targeted gaps → scope agreement → written artifact**. The plugin is doing product thinking *with* you, not for you. Every answer you give becomes a constraint that shapes decisions downstream.
 
 > 💡 **Why this matters:** If you'd said "Celsius default" here, it would cascade — the design doc, bead bodies, and test expectations all change. The brief is the root of the decision tree.
 
