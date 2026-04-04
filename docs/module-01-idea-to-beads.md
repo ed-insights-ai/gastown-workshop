@@ -30,24 +30,24 @@ Let's trace how it becomes one.
 
 ## Before You Start This Module
 
-This part of the tutorial happens **inside Claude Code**, not in a regular shell.
-The `gt-sdlc` flow is implemented as a Claude Code plugin, so before you begin,
-make sure:
+This part of the tutorial happens **inside Claude Code**, not in a regular shell. The `gt-sdlc` commands are Claude Code slash commands — they only work from within a Claude Code session.
 
-1. You're in Claude Code in the `weatherly` project
-2. The plugin marketplace is installed
-3. The `gt-sdlc` plugin is installed
-
-Example:
+**Where to run it:** Your Gas Town crew workspace. This is where you do human-directed, exploratory work before slinging beads.
 
 ```bash
+# Open a Claude Code session in your crew workspace
+cd ~/gt/YOUR_RIG/crew/claudio
+claude
+```
+
+**Plugin setup (one-time, if not done already):** Run these from inside Claude Code:
+
+```
 /plugin marketplace add https://github.com/danielscholl/claude-sdlc
 /plugin install gt-sdlc
 ```
 
-Once installed, you'll run `/gt-sdlc:brief`, `/gt-sdlc:design`, and
-`/gt-sdlc:plan` **inside Claude Code** to generate the markdown artifacts that
-Gas Town will later execute.
+Once installed, you'll run `/gt-sdlc:brief`, `/gt-sdlc:design`, and `/gt-sdlc:plan` from inside Claude Code to generate the markdown artifacts that Gas Town will later execute. The artifacts land in `docs/` inside your crew workspace.
 
 ---
 
