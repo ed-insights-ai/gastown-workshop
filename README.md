@@ -86,9 +86,8 @@ not push changes back.
 Recommended flow:
 
 1. Fork `claudiogarza/gastown-workshop` to your own org/account
-2. Clone **your fork**
-3. Use that clone as the repo for the workshop
-4. Let Gas Town push and merge against the fork you control
+2. Use `gt rig add` with your fork URL — Gas Town clones it into its own structure
+3. Let Gas Town push and merge against the fork you control
 
 ## Quick Start
 
@@ -97,21 +96,23 @@ Recommended flow:
 Assuming Gas Town is already running, this gets you wired up for the tutorial in a few steps.
 
 ```bash
-# 0. Fork this repo to your own GitHub org/account, then clone your fork
+# 0. Fork this repo to your own GitHub org/account
 # Example (personal account):
-#   gh repo fork claudiogarza/gastown-workshop --clone
+#   gh repo fork claudiogarza/gastown-workshop
 # Example (org):
-#   gh repo fork claudiogarza/gastown-workshop --clone --org YOUR_ORG
-#   cd gastown-workshop
+#   gh repo fork claudiogarza/gastown-workshop --org YOUR_ORG
+# No need to clone — gt rig add handles that.
 
 # 1. Verify Gas Town is running
 gt status
 
 # 2. Add a rig pointing at your fork (pick your own rig name)
-# Example:
+# SSH:
 #   gt rig add workshop git@github.com:YOUR_ORG_OR_USER/gastown-workshop.git \
 #     --upstream-url https://github.com/claudiogarza/gastown-workshop
-# If you prefer HTTPS instead of SSH, use the HTTPS clone URL for your fork.
+# HTTPS:
+#   gt rig add workshop https://github.com/YOUR_ORG_OR_USER/gastown-workshop.git \
+#     --upstream-url https://github.com/claudiogarza/gastown-workshop
 
 # 3. Verify the rig is registered
 gt rig list
