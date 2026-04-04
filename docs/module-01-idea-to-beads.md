@@ -28,11 +28,36 @@ Let's trace how it becomes one.
 
 ---
 
+## Before You Start This Module
+
+This part of the tutorial happens **inside Claude Code**, not in a regular shell.
+The `gt-sdlc` flow is implemented as a Claude Code plugin, so before you begin,
+make sure:
+
+1. You're in Claude Code in the `weatherly` project
+2. The plugin marketplace is installed
+3. The `gt-sdlc` plugin is installed
+
+Example:
+
+```bash
+/plugin marketplace add https://github.com/danielscholl/claude-sdlc
+/plugin install gt-sdlc
+```
+
+Once installed, you'll run `/gt-sdlc:brief`, `/gt-sdlc:design`, and
+`/gt-sdlc:plan` **inside Claude Code** to generate the markdown artifacts that
+Gas Town will later execute.
+
+---
+
 ## Step 1: The Product Brief
 
 A brief answers: what, for who, and what does success look like. No implementation details — those belong in design.
 
-You can write it manually, or use the `gt-sdlc` plugin if it's installed:
+In this tutorial, you do this step **in Claude Code using the `gt-sdlc` plugin**.
+You can write it manually, but the intended workflow here is to let Claude Code
+run the interactive brief command and write the artifact for you:
 
 ```bash
 # With the plugin (interactive dialog, then writes the file):
