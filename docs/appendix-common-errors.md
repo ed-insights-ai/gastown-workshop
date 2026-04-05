@@ -10,7 +10,7 @@ Quick lookup for error messages you'll actually see.
 **You're running `bd create` from the wrong directory.**
 Gas Town commands need to run from inside `~/gt` or a crew/polecat workspace.
 ```bash
-cd ~/gt/YOUR_RIG/crew/claudio
+cd ~/gt/YOUR_RIG/crew/YOUR_CREW
 bd create ...
 ```
 
@@ -25,7 +25,7 @@ echo "y" | bd migrate --update-repo-id
 **Harmless warning.** Your beads still work correctly.
 Silence it:
 ```bash
-cd ~/gt/YOUR_RIG/crew/claudio
+cd ~/gt/YOUR_RIG/crew/YOUR_CREW
 bd config set beads.role maintainer
 ```
 
@@ -158,7 +158,7 @@ gt mail read 1   # ✅ read by index
 ### `gt mail send`: `--thread` flag doesn't exist
 Use `--reply-to <message-id>` instead:
 ```bash
-gt mail send YOUR_RIG/claudio \
+gt mail send YOUR_RIG/YOUR_CREW \
   --subject "Re: ..." \
   --reply-to hq-wisp-xxxxx \    # message ID from gt mail inbox
   --message "your reply"
@@ -170,7 +170,7 @@ Messages stay in inbox until archived. The newest is always index 1. Use `gt mai
 ### After replying, crew agent doesn't continue
 You need to nudge it. Mail delivery alone doesn't wake the agent:
 ```bash
-gt nudge YOUR_RIG/claudio "Answers sent. Continue."
+gt nudge YOUR_RIG/YOUR_CREW "Answers sent. Continue."
 ```
 
 ---
@@ -187,9 +187,9 @@ cp ~/source/gt-toolkit/formulas/*.formula.toml ~/gt/.beads/formulas/
 ### `mol-idea-to-plan` slung but crew session doesn't react
 **Check if the crew session is actually running:**
 ```bash
-gt crew list        # is claudio running?
-gt crew start claudio    # start it if not
-gt crew at claudio       # attach to watch it
+gt crew list        # is YOUR_CREW running?
+gt crew start YOUR_CREW    # start it if not
+gt crew at YOUR_CREW       # attach to watch it
 ```
 
 ### Molecule steps showing 0/N complete, nothing happening

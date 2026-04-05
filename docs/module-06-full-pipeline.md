@@ -77,15 +77,15 @@ The `mol-idea-to-plan` workflow has two interactive steps where it pauses and wa
 
 ```bash
 # Start the tmux session with Claude Code inside
-gt crew start claudio
+gt crew start YOUR_CREW
 
 # In a separate terminal, attach to it
-gt crew at claudio
+gt crew at YOUR_CREW
 ```
 
-Once attached, you'll see a Claude Code prompt inside `~/gt/YOUR_RIG/crew/claudio/`. This is your crew agent. It has already run `gt prime` and knows its identity.
+Once attached, you'll see a Claude Code prompt inside `~/gt/YOUR_RIG/crew/YOUR_CREW/`. This is your crew agent. It has already run `gt prime` and knows its identity.
 
-> 💡 **Two windows:** Keep two terminal windows open. Window 1: your normal shell for running `gt` commands. Window 2: attached to the crew session via `gt crew at claudio`. The crew session is where the interactive pipeline runs.
+> 💡 **Two windows:** Keep two terminal windows open. Window 1: your normal shell for running `gt` commands. Window 2: attached to the crew session via `gt crew at YOUR_CREW`. The crew session is where the interactive pipeline runs.
 
 ---
 
@@ -95,7 +95,7 @@ From your **normal shell** (Window 1):
 
 ```bash
 cd ~/gt
-gt sling mol-idea-to-plan YOUR_RIG/crew/claudio \
+gt sling mol-idea-to-plan YOUR_RIG/crew/YOUR_CREW \
   --var problem="Add a 5-day weather forecast to weatherly. Show each day's high/low temps, precipitation probability, and conditions summary. Should integrate with the existing display module and be triggered by a --forecast flag." \
   --var context="weatherly is a Python CLI that calls wttr.in API. Existing modules: config.py, models.py, parser.py, fetcher.py, display.py, cli.py, __main__.py"
 ```
@@ -103,7 +103,7 @@ gt sling mol-idea-to-plan YOUR_RIG/crew/claudio \
 Then **attach to the crew session** (Window 2) to watch and interact:
 
 ```bash
-gt crew at claudio
+gt crew at YOUR_CREW
 ```
 
 ---
@@ -113,7 +113,7 @@ gt crew at claudio
 The crew agent picks up the sling immediately (Propulsion Principle) and starts. **You don't need to watch** — but you can:
 
 ```bash
-tmux capture-pane -t edi-crew-claudio -p | tail -30   # watch raw output
+tmux capture-pane -t edi-crew-YOUR_CREW -p | tail -30   # watch raw output
 gt feed                                                 # town-wide event stream
 ```
 
@@ -142,7 +142,7 @@ gt mail read 1
 You'll see something like:
 ```
 Subject: PRD Questions: weatherly 5-day forecast
-From: YOUR_RIG/claudio
+From: YOUR_RIG/YOUR_CREW
 
 ## Overall PRD Health: B-
 
@@ -163,7 +163,7 @@ Reply with numbered answers.
 
 **Reply via mail and nudge to continue:**
 ```bash
-gt mail send YOUR_RIG/claudio \
+gt mail send YOUR_RIG/YOUR_CREW \
   --subject "Re: PRD Questions: weatherly 5-day forecast" \
   --reply-to <message-id-from-inbox> \
   --stdin << 'EOF'
@@ -176,7 +176,7 @@ gt mail send YOUR_RIG/claudio \
 Proceed to plan generation.
 EOF
 
-gt nudge YOUR_RIG/claudio "Answers sent. Proceed with plan generation."
+gt nudge YOUR_RIG/YOUR_CREW "Answers sent. Proceed with plan generation."
 ```
 
 ---
@@ -196,7 +196,7 @@ gt nudge YOUR_RIG/claudio "Answers sent. Proceed with plan generation."
 Same pattern. Mail arrives, you read and reply.
 
 ```bash
-gt mail inbox       # new message from claudio
+gt mail inbox       # new message from YOUR_CREW
 gt mail read 1
 ```
 
@@ -221,7 +221,7 @@ Reply: APPROVE / APPROVE WITH NOTES / REVISE
 ```
 
 ```bash
-gt mail send YOUR_RIG/claudio \
+gt mail send YOUR_RIG/YOUR_CREW \
   --subject "Re: Plan Ready for Approval: weatherly 5-day forecast" \
   --reply-to <message-id> \
   --stdin << 'EOF'
@@ -230,7 +230,7 @@ APPROVE
 Proceed to bead creation.
 EOF
 
-gt nudge YOUR_RIG/claudio "Approved. Create the beads."
+gt nudge YOUR_RIG/YOUR_CREW "Approved. Create the beads."
 ```
 
 ---
@@ -246,7 +246,7 @@ Awaiting your next instruction.
 
 Check what was created:
 ```bash
-cd ~/gt/YOUR_RIG/crew/claudio
+cd ~/gt/YOUR_RIG/crew/YOUR_CREW
 bd list | grep -v "wisp\|Patrol\|Refinery"
 ```
 
@@ -334,7 +334,7 @@ gt peek YOUR_RIG/furiosa    # see what step furiosa is on
 For any single bead where you want the full design-implement-review-test-submit lifecycle:
 
 ```bash
-gt sling shiny YOUR_RIG --var feature="edi-042" --var assignee="YOUR_RIG/crew/claudio"
+gt sling shiny YOUR_RIG --var feature="edi-042" --var assignee="YOUR_RIG/crew/YOUR_CREW"
 ```
 
 Or sling a bead to a rig and `shiny` applies automatically via `mol-polecat-work`:
@@ -374,29 +374,29 @@ From `gt sling mol-idea-to-plan` to beads ready:
 ## 📝 Key Commands Learned
 
 ```bash
-gt crew start claudio --rig YOUR_RIG    # start crew session
+gt crew start YOUR_CREW --rig YOUR_RIG    # start crew session
 gt crew list YOUR_RIG                   # verify it's running
 gt formula list                         # see all available formulas
 
 # Sling the pipeline (from ~/gt, NOT inside crew session)
-gt sling mol-idea-to-plan YOUR_RIG/crew/claudio \
+gt sling mol-idea-to-plan YOUR_RIG/crew/YOUR_CREW \
   --var problem="..." \
   --var context="..."
 
 # Monitor progress
-tmux capture-pane -t edi-crew-claudio -p | tail -30
+tmux capture-pane -t edi-crew-YOUR_CREW -p | tail -30
 gt feed
 
 # Human gates (mail-based)
 gt mail inbox                           # check for questions/approval requests
 gt mail read 1                          # read the message
-gt mail send YOUR_RIG/claudio \
+gt mail send YOUR_RIG/YOUR_CREW \
   --subject "Re: ..." \
   --reply-to <message-id> \
   --stdin << 'EOF'
 your answers here
 EOF
-gt nudge YOUR_RIG/claudio "..."    # wake the crew agent to continue
+gt nudge YOUR_RIG/YOUR_CREW "..."    # wake the crew agent to continue
 
 # After bead creation
 bd list | grep -v "wisp\|Patrol"        # see created beads

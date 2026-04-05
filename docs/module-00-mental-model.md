@@ -29,7 +29,7 @@ Bead: edi-042
   Type: task
   Priority: P2
   Status: open → in_progress → closed
-  created_by: YOUR_RIG/crew/claudio
+  created_by: YOUR_RIG/crew/YOUR_CREW
 ```
 
 ### 🦡 Polecat
@@ -78,7 +78,7 @@ A **persistent human workspace**. Your git clone where you (or an AI acting as y
 └──────┘  └──────┘  └──────┘
 
          ┌──────────┐
-         │  claudio │  ← Crew (persistent, human-managed)
+         │ YOUR_CREW│  ← Crew (persistent, human-managed)
          └──────────┘
 ```
 
@@ -88,7 +88,7 @@ A **persistent human workspace**. Your git clone where you (or an AI acting as y
 - **Witness** — watches polecats in one rig, nudges stalled ones, respawns crashed ones
 - **Refinery** — processes the merge queue, merges polecat branches to main
 - **Polecat** — does actual work, ephemeral (Toast, Furiosa, Nux are pool names)
-- **Crew** — persistent workspace for you/me (claudio)
+- **Crew**: persistent workspace for you (your crew name)
 - **Dog** — Deacon's infrastructure helpers, NOT for user work
 
 ---

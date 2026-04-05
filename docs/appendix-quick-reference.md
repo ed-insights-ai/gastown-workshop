@@ -69,12 +69,12 @@ gt polecat nuke <name>                       # destroy polecat
 ## Crew Operations
 
 ```bash
-gt crew start claudio           # start session (creates if needed)
-gt crew at claudio              # attach terminal
+gt crew start YOUR_CREW           # start session (creates if needed)
+gt crew at YOUR_CREW              # attach terminal
 gt crew list                    # status of all crew workspaces
-gt crew stop claudio            # stop session
-gt crew refresh claudio         # context cycle with handoff
-gt crew restart claudio         # kill + restart fresh
+gt crew stop YOUR_CREW            # stop session
+gt crew refresh YOUR_CREW         # context cycle with handoff
+gt crew restart YOUR_CREW         # kill + restart fresh
 ```
 
 ## Molecule Navigation (inside agent)

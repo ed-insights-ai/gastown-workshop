@@ -2,7 +2,7 @@
 
 > **Goal:** Use the proper `gt convoy stage → launch` flow. See what wave computation actually looks like, and understand what staging gives you that direct slinging doesn't.
 
-> **All commands run from:** `~/gt/YOUR_RIG/crew/claudio`
+> **All commands run from:** `~/gt/YOUR_RIG/crew/YOUR_CREW`
 
 ---
 
@@ -17,7 +17,7 @@ Now that you understand beads, dependencies, and parallel waves, you can let aut
 
 ```bash
 # Option 2: crew agent reads your plan and creates beads
-gt crew at claudio
+gt crew at YOUR_CREW
 # Then inside the session:
 # "Read docs/initial-plan.bead.md and run all the bd create and bd dep add commands in it."
 ```
