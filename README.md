@@ -30,11 +30,11 @@ By the end of this workshop you'll know how to:
 You'll build **weatherly**, a CLI weather dashboard in Python. It's small enough to finish in an afternoon but has enough structure to demonstrate everything Gas Town can do:
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                    weatherly CLI                    │
+┌────────────────────────────────────────────────────┐
+│                    weatherly CLI                   │
 ├─────────────┬──────────────┬───────────────────────┤
-│   fetcher   │   processor  │       display          │
-│  (API call) │ (parse JSON) │   (terminal UI)        │
+│   fetcher   │   processor  │       display         │
+│  (API call) │ (parse JSON) │   (terminal UI)       │
 └─────────────┴──────────────┴───────────────────────┘
          ↑                              ↑
     Module 2-3                     Module 4-5
