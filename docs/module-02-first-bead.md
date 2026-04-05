@@ -52,7 +52,7 @@ EOF
 Then add acceptance criteria separately:
 ```bash
 # Use the bead ID returned above (e.g. edi-001)
-bd update edi-001 --acceptance "- [ ] File exists at weatherly/config.py
+bd update <BEAD_ID> --acceptance "- [ ] File exists at weatherly/config.py
 - [ ] All constants defined with correct values and type annotations
 - [ ] Config dataclass exists with location, units, format fields
 - [ ] Module docstring present
@@ -65,16 +65,16 @@ bd update edi-001 --acceptance "- [ ] File exists at weatherly/config.py
 > ```
 > Great for pre-writing bead descriptions in your editor.
 
-**You'll get back something like:** `edi-001`
+**You'll get back a bead ID** like `edi-001` (yours will be different). Write it down or copy it.
 
-Take note of that ID. You'll need it.
+> 💡 **Your IDs will differ from these examples.** Gas Town generates unique IDs. Wherever you see `edi-001` below, substitute the actual ID you received.
 
 ---
 
 ## Step 2: Inspect the Bead
 
 ```bash
-bd show edi-001
+bd show <BEAD_ID>        # e.g. bd show edi-a3x
 ```
 
 You should see the title, description, acceptance criteria, status (`open`), and `created_by` (your crew identity).
@@ -92,7 +92,7 @@ bd list --json | jq '.[0]'   # see the raw structure
 bd ready
 ```
 
-This shows all beads with no unresolved blockers, things that can be picked up right now. `edi-001` should appear here since it has no dependencies.
+This shows all beads with no unresolved blockers, things that can be picked up right now. Your bead should appear here since it has no dependencies.
 
 ---
 
@@ -101,14 +101,14 @@ This shows all beads with no unresolved blockers, things that can be picked up r
 Before slinging, create a convoy so you can track this work:
 
 ```bash
-gt convoy create "weatherly config module" edi-001 --notify
+gt convoy create "weatherly config module" <BEAD_ID> --notify
 ```
 
-**You'll get:** `hq-cv-abc` (or similar)
+**You'll get a convoy ID** like `hq-cv-abc` (yours will be different).
 
 ```bash
-gt convoy list               # see your new convoy in the dashboard
-gt convoy status hq-cv-abc   # see the convoy details
+gt convoy list                   # see your new convoy in the dashboard
+gt convoy status <CONVOY_ID>     # see the convoy details
 ```
 
 > 💡 **"Progress: 0/0"?** Don't worry. The convoy shows `0/0` until the bead is actually slung to a polecat. The tracking link is there; the counter activates on dispatch. This is normal.
@@ -126,7 +126,7 @@ gt rig list
 
 Then sling:
 ```bash
-gt sling edi-001 YOUR_RIG_NAME
+gt sling <BEAD_ID> YOUR_RIG_NAME
 ```
 
 Replace `YOUR_RIG_NAME` with your actual rig name from above.
@@ -193,7 +193,7 @@ You'll see events like:
 
 ### Watch your convoy update
 ```bash
-gt convoy status hq-cv-abc
+gt convoy status <CONVOY_ID>
 ```
 
 ---
@@ -210,7 +210,7 @@ When the polecat is done:
 
 Check the results:
 ```bash
-bd show edi-001           # status: closed
+bd show <BEAD_ID>         # status: closed
 gt convoy list --all      # convoy: landed
 git log --oneline -3      # see the commit with the polecat's attribution
 ```
@@ -274,13 +274,13 @@ ConvoyManager detects close (within 5 seconds)
 Run `gt polecat list YOUR_RIG_NAME`. Is it in "Working" state? Peek with `gt peek YOUR_RIG/polecat-name`. If it's stalled after 10+ minutes of no output, `gt polecat nuke polecat-name` and re-sling.
 
 **"I don't see the bead in bd ready"**
-Check if the bead was created correctly with `bd show edi-001`. If it's already `hooked`, it's been picked up by the polecat.
+Check if the bead was created correctly with `bd show <BEAD_ID>`. If it's already `hooked`, it's been picked up by the polecat.
 
 **"The convoy shows 0/0. Is something broken?"**
 Nope, normal. The counter shows 0/0 until dispatch. After slinging, it activates.
 
 **"The convoy didn't close after the bead closed"**
-Convoy auto-closes when ALL tracked beads close. Check `gt convoy status hq-cv-abc` to see which are still open.
+Convoy auto-closes when ALL tracked beads close. Check `gt convoy status <CONVOY_ID>` to see which are still open.
 
 **"I see `beads.role not configured` warning"**
 This warning appears if you haven't run `bd init` to set your role. It's harmless for workshop purposes. Your beads still get created correctly. Suppress it by running `bd config set beads.role maintainer` from your crew directory.

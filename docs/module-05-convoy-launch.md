@@ -132,12 +132,12 @@ Create tests/__init__.py (empty).
 EOF
 ```
 ```bash
-bd update edi-008 --acceptance "- [ ] tests/test_parser.py exists
+bd update <TEST_PARSER_ID> --acceptance "- [ ] tests/test_parser.py exists
 - [ ] All 3 test cases present
 - [ ] python -m pytest tests/test_parser.py passes"
 ```
 
-Note ID: `edi-008`
+Note the ID. We'll call it **TEST_PARSER_ID**.
 
 ```bash
 # Integration test
@@ -152,22 +152,22 @@ Verify output contains temperature and location strings.
 EOF
 ```
 ```bash
-bd update edi-009 --acceptance "- [ ] tests/test_integration.py exists
+bd update <TEST_INTEG_ID> --acceptance "- [ ] tests/test_integration.py exists
 - [ ] HTTP call is mocked (no real network calls)
 - [ ] Full chain executes without errors
 - [ ] python -m pytest tests/test_integration.py passes"
 ```
 
-Note ID: `edi-009`
+Note the ID. We'll call it **TEST_INTEG_ID**.
 
 ---
 
 ## Declare Dependencies
 
 ```bash
-bd dep add edi-008 edi-002   # test_parser needs models
-bd dep add edi-008 edi-003   # test_parser needs parser
-bd dep add edi-009 edi-007   # integration test needs full wired app
+bd dep add <TEST_PARSER_ID> <BEAD_A>      # test_parser needs models (from Module 3)
+bd dep add <TEST_PARSER_ID> <BEAD_B>      # test_parser needs parser (from Module 3)
+bd dep add <TEST_INTEG_ID> <WIRING_ID>    # integration test needs full wired app (from Module 4)
 ```
 
 ---
@@ -177,7 +177,7 @@ bd dep add edi-009 edi-007   # integration test needs full wired app
 You can pass bead IDs directly to `gt convoy stage`. No need for a parent epic:
 
 ```bash
-gt convoy stage edi-004 edi-005 edi-006 edi-007 edi-008 edi-009
+gt convoy stage <FETCHER_ID> <DISPLAY_ID> <CLI_ID> <WIRING_ID> <TEST_PARSER_ID> <TEST_INTEG_ID>
 ```
 
 > 💡 **You can also stage an epic** to pick up all its children:
@@ -248,10 +248,10 @@ You can fix the dep, then re-stage:
 
 ```bash
 # Fix the issue
-bd dep add edi-008 edi-003
+bd dep add <TEST_PARSER_ID> <BEAD_B>
 
 # Re-stage (creates a new staged convoy)
-gt convoy stage edi-004 edi-005 edi-006 edi-007 edi-008 edi-009
+gt convoy stage <FETCHER_ID> <DISPLAY_ID> <CLI_ID> <WIRING_ID> <TEST_PARSER_ID> <TEST_INTEG_ID>
 ```
 
 Nothing ran, nothing broke. You caught it in the pre-flight.
@@ -261,7 +261,7 @@ Nothing ran, nothing broke. You caught it in the pre-flight.
 ## Launch
 
 ```bash
-gt convoy launch hq-cv-wxyz
+gt convoy launch <CONVOY_ID>
 ```
 
 Wave 1 dispatches immediately. Polecats spin up in parallel. Walk away. The ConvoyManager handles the rest.
@@ -274,7 +274,7 @@ Wave 1 dispatches immediately. Polecats spin up in parallel. Walk away. The Conv
 
 ```bash
 # Overall convoy progress
-gt convoy status hq-cv-wxyz
+gt convoy status <CONVOY_ID>
 
 # Interactive monitoring (updates automatically)
 gt convoy -i

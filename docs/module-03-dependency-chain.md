@@ -4,6 +4,8 @@
 
 > **All commands run from:** `~/gt/YOUR_RIG/crew/claudio`
 
+> 💡 **Your bead IDs will differ from these examples.** Gas Town generates unique IDs each time. The examples use names like BEAD_A, BEAD_B, FETCHER_ID, etc. to make it clear where to substitute your actual IDs. Keep a note of each ID as you create beads.
+
 ---
 
 ## Why We're Still Doing This Manually
@@ -69,13 +71,13 @@ EOF
 ```
 
 ```bash
-bd update edi-002 --acceptance "- [ ] File exists at weatherly/models.py
+bd update <BEAD_A> --acceptance "- [ ] File exists at weatherly/models.py
 - [ ] WeatherData dataclass defined with all 9 fields, correct types
 - [ ] __str__ method returns readable summary string
 - [ ] No import errors (python -c 'from weatherly.models import WeatherData')"
 ```
 
-Note the ID: `edi-002`
+Note the ID. We'll call it **BEAD_A** (your actual ID will be something like `edi-a3x`).
 
 ---
 
@@ -105,29 +107,29 @@ EOF
 ```
 
 ```bash
-bd update edi-003 --acceptance "- [ ] File exists at weatherly/parser.py
+bd update <BEAD_B> --acceptance "- [ ] File exists at weatherly/parser.py
 - [ ] parse_weather function defined with correct signature
 - [ ] All 9 fields mapped correctly
 - [ ] ValueError raised with helpful message on malformed input
 - [ ] No import errors"
 ```
 
-Note the ID: `edi-003`
+Note the ID. We'll call it **BEAD_B**.
 
 ---
 
 ## Step 3: Declare the Dependency
 
 ```bash
-bd dep add edi-003 edi-002
+bd dep add <BEAD_B> <BEAD_A>
 ```
 
-**Read this as:** "edi-003 is blocked by edi-002"
+**Read this as:** "BEAD_B is blocked by BEAD_A"
 
 Verify it:
 ```bash
-bd show edi-003   # should show "blocked by: edi-002"
-bd ready          # edi-003 should NOT appear here (it's blocked)
+bd show <BEAD_B>   # should show "blocked by: <BEAD_A>"
+bd ready           # BEAD_B should NOT appear here (it's blocked)
 ```
 
 ---
@@ -135,7 +137,7 @@ bd ready          # edi-003 should NOT appear here (it's blocked)
 ## Step 4: Create the Convoy
 
 ```bash
-gt convoy create "weatherly data layer" edi-002 edi-003 --notify
+gt convoy create "weatherly data layer" <BEAD_A> <BEAD_B> --notify
 ```
 
 ---
@@ -143,11 +145,11 @@ gt convoy create "weatherly data layer" edi-002 edi-003 --notify
 ## Step 5: Stage the Convoy
 
 ```bash
-gt convoy status hq-cv-xyz
+gt convoy status <CONVOY_ID>
 ```
 
 ```
-🚚 hq-cv-xyz: weatherly data layer
+🚚 <CONVOY_ID>: weatherly data layer
   Status: ●
   Progress: 0/0 completed
 ```
@@ -161,15 +163,15 @@ gt convoy status hq-cv-xyz
 **You only sling what's unblocked.** The ConvoyManager handles the rest.
 
 ```bash
-gt sling edi-002 YOUR_RIG_NAME
+gt sling <BEAD_A> YOUR_RIG_NAME
 ```
 
 Watch it work:
 ```bash
 gt feed
 gt polecat list YOUR_RIG_NAME     # see which polecat picked it up
-gt peek YOUR_RIG_NAME/furiosa     # use the actual polecat name from above
-gt convoy status hq-cv-xyz
+gt peek YOUR_RIG_NAME/<polecat>   # use the actual polecat name from above
+gt convoy status <CONVOY_ID>
 ```
 
 ---

@@ -80,8 +80,8 @@ gt sling <id> YOUR_RIG         # re-dispatch
 ### 3. Convoy Stranded (Work Queued, Nothing Running)
 
 ```bash
-gt convoy stranded             # find stalled convoys
-gt convoy status hq-cv-xyz     # inspect the specific convoy
+gt convoy stranded                 # find stalled convoys
+gt convoy status <CONVOY_ID>       # inspect the specific convoy
 bd show <bead-id>              # check blocker statuses
 bd dep cycles                  # any circular deps?
 ```

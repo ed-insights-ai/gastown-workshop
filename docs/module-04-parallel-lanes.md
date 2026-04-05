@@ -51,7 +51,7 @@ EOF
 ```
 
 ```bash
-bd update edi-004 --acceptance "- [ ] File exists at weatherly/fetcher.py
+bd update <FETCHER_ID> --acceptance "- [ ] File exists at weatherly/fetcher.py
 - [ ] fetch_weather function defined with correct signature
 - [ ] Uses requests library with timeout
 - [ ] Raises correct exception types
@@ -78,7 +78,7 @@ EOF
 ```
 
 ```bash
-bd update edi-005 --acceptance "- [ ] File exists at weatherly/display.py
+bd update <DISPLAY_ID> --acceptance "- [ ] File exists at weatherly/display.py
 - [ ] display_weather function defined
 - [ ] Outputs all WeatherData fields with emoji labels
 - [ ] No import errors"
@@ -102,13 +102,13 @@ EOF
 ```
 
 ```bash
-bd update edi-006 --acceptance "- [ ] File exists at weatherly/cli.py
+bd update <CLI_ID> --acceptance "- [ ] File exists at weatherly/cli.py
 - [ ] parse_args() returns Config instance
 - [ ] All arguments defined correctly
 - [ ] --help output is clear and includes all arguments"
 ```
 
-Note the IDs: `edi-004`, `edi-005`, `edi-006`
+Note the three IDs. We'll call them **FETCHER_ID**, **DISPLAY_ID**, and **CLI_ID** (yours will be different).
 
 ---
 
@@ -135,32 +135,32 @@ EOF
 ```
 
 ```bash
-bd update edi-007 --acceptance "- [ ] File exists at weatherly/__main__.py
+bd update <WIRING_ID> --acceptance "- [ ] File exists at weatherly/__main__.py
 - [ ] All modules imported and called in correct order
 - [ ] Error handling for network and data errors
 - [ ] python -m weatherly London runs without import errors
 - [ ] weatherly/__init__.py exists"
 ```
 
-Note the ID: `edi-007`
+Note the ID. We'll call it **WIRING_ID**.
 
 ---
 
 ## Step 3: Declare Dependencies
 
-`edi-007` needs all three:
+The wiring bead needs all three parallel beads plus the parser from Module 3:
 
 ```bash
-bd dep add edi-007 edi-004   # blocked by fetcher
-bd dep add edi-007 edi-005   # blocked by display
-bd dep add edi-007 edi-006   # blocked by CLI
-bd dep add edi-007 edi-003   # blocked by parser (which needed models)
+bd dep add <WIRING_ID> <FETCHER_ID>    # blocked by fetcher
+bd dep add <WIRING_ID> <DISPLAY_ID>    # blocked by display
+bd dep add <WIRING_ID> <CLI_ID>        # blocked by CLI
+bd dep add <WIRING_ID> <BEAD_B>        # blocked by parser (from Module 3)
 ```
 
 Verify:
 ```bash
-bd show edi-007    # shows 4 blockers
-bd ready           # edi-004, edi-005, edi-006 appear; edi-007 does NOT
+bd show <WIRING_ID>    # shows 4 blockers
+bd ready               # fetcher, display, CLI appear; wiring does NOT
 bd dep cycles      # must be clean
 ```
 
@@ -170,7 +170,7 @@ bd dep cycles      # must be clean
 
 ```bash
 gt convoy create "weatherly full implementation" \
-  edi-004 edi-005 edi-006 edi-007 --notify
+  <FETCHER_ID> <DISPLAY_ID> <CLI_ID> <WIRING_ID> --notify
 ```
 
 ---
@@ -180,9 +180,9 @@ gt convoy create "weatherly full implementation" \
 Sling the three independent beads:
 
 ```bash
-gt sling edi-004 YOUR_RIG_NAME
-gt sling edi-005 YOUR_RIG_NAME
-gt sling edi-006 YOUR_RIG_NAME
+gt sling <FETCHER_ID> YOUR_RIG_NAME
+gt sling <DISPLAY_ID> YOUR_RIG_NAME
+gt sling <CLI_ID> YOUR_RIG_NAME
 ```
 
 > 💡 **Why sling manually here?** We're learning what parallel execution looks like. In Module 5, you'll use `gt convoy stage` and `gt convoy launch` to automate this. But first, see it with your own eyes.
