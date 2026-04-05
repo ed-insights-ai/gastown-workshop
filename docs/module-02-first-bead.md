@@ -39,12 +39,20 @@ bd create "Add weatherly config module" -t task -p P2 --stdin << 'EOF'
 Create weatherly/config.py with API configuration and app defaults.
 
 File should contain:
-- API_BASE_URL = 'https://wttr.in'
-- DEFAULT_FORMAT = 'j1' (JSON format)
-- DEFAULT_UNITS = 'fahrenheit'
-- REQUEST_TIMEOUT = 10 (seconds)
-- A Config dataclass with location, units, and format fields
+- Module-level constants for defaults:
+  API_BASE_URL = 'https://wttr.in'
+  DEFAULT_FORMAT = 'j1' (JSON format)
+  DEFAULT_UNITS = 'fahrenheit'
+  REQUEST_TIMEOUT = 10 (seconds)
+- A Config dataclass with fields:
+  api_base_url: str = API_BASE_URL
+  location: str = 'auto'
+  units: str = DEFAULT_UNITS
+  format: str = DEFAULT_FORMAT
+  request_timeout: int = REQUEST_TIMEOUT
 
+The dataclass provides runtime config (populated by CLI args).
+The module-level constants are the defaults.
 All values should be type-annotated. Add a module docstring.
 EOF
 ```
@@ -54,7 +62,7 @@ Then add acceptance criteria separately:
 # Use the bead ID returned above (e.g. edi-001)
 bd update <BEAD_ID> --acceptance "- [ ] File exists at weatherly/config.py
 - [ ] All constants defined with correct values and type annotations
-- [ ] Config dataclass exists with location, units, format fields
+- [ ] Config dataclass exists with api_base_url, location, units, format, request_timeout fields
 - [ ] Module docstring present
 - [ ] No import errors (python -c 'from weatherly.config import Config')"
 ```
