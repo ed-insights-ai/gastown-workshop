@@ -2,11 +2,22 @@
 
 A hands-on tutorial for learning Gas Town — the multi-agent orchestration layer for AI coding workflows.
 
+## What is Gas Town?
+
+Gas Town is a system for coordinating multiple AI agents to design, build, and ship code through structured workflows.
+
+Instead of prompting one model at a time, you:
+- Break work into **beads** (small, well-defined units of work)
+- Organize them into **convoys** (ordered batches for dispatch)
+- Run them through agents with full traceability and recovery
+
+This workshop teaches you how to think and operate in that model by building a real project end-to-end.
+
 ## What You'll Learn
 
 By the end of this workshop you'll know how to:
 
-- Think in Gas Town's mental model (agents, beads, convoys, molecules)
+- Think in Gas Town's mental model (you'll learn terms like agents, beads, convoys, and molecules)
 - Create beads and run them through polecats
 - Build dependency chains and parallel work lanes
 - Use the full design-to-delivery pipeline (spec → plan → beads → swarm)
@@ -42,15 +53,15 @@ You'll build **weatherly** — a CLI weather dashboard in Python. It's small eno
 | [4. Parallel Lanes](docs/module-04-parallel-lanes.md) | A, B, C at once | Concurrent work |
 | [5. Convoy Launch](docs/module-05-convoy-launch.md) | Stage → launch → watch | Automated dispatch |
 | [6. Full Pipeline](docs/module-06-full-pipeline.md) | `mol-idea-to-plan` + `shiny` | Design pipeline + structured execution |
-| [7. Recovery](docs/module-07-recovery.md) | When it breaks | Stalled polecats, zombies |
+| [7. Recovery & Debugging](docs/module-07-recovery.md) | When things get weird | Stalled polecats, zombies |
 
 ## Setup & Reference
 
 | Section | Contents |
 |---------|----------|
 | [Setup](docs/setup.md) | Full environment setup, shell integration, crew workspace, troubleshooting |
-| [A. Quick Reference](docs/appendix-quick-reference.md) | All key commands in one place |
-| [C. Common Errors](docs/appendix-common-errors.md) | Error messages + fixes |
+| [Quick Reference](docs/appendix-quick-reference.md) | All key commands in one place |
+| [Common Errors](docs/appendix-common-errors.md) | Error messages + fixes |
 
 ## Prerequisites
 
@@ -91,9 +102,9 @@ Recommended flow:
 
 ## Quick Start
 
-> 🔧 **Gas Town not installed yet?** → **[Full Setup Guide →](docs/setup.md)**
-
 Assuming Gas Town is already running, this gets you wired up for the tutorial in a few steps.
+
+> 🔧 **Gas Town not installed yet?** → **[Full Setup Guide →](docs/setup.md)**
 
 ```bash
 # 0. Fork this repo to your own GitHub org/account
@@ -122,11 +133,9 @@ You're ready when:
 - `gt rig list` shows the rig pointing at your fork
 - `gt formula list` includes `mol-idea-to-plan` and `shiny`
 
-> Not set up yet? → **[Full Setup Guide →](docs/setup.md)**
-
 **→ [Start with Module 0: The Mental Model →](docs/module-00-mental-model.md)**
 
-If you hit setup issues, detour here: **[Full Setup Guide →](docs/setup.md)**
+If you hit setup issues, check the **[Full Setup Guide →](docs/setup.md)**
 
 ---
 
