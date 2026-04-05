@@ -17,7 +17,7 @@ source ~/.zshrc
 gt up
 gt status                  # mayor + deacon + witness + refinery running
 
-cd YOUR_TOWN_ROOT/YOUR_RIG/crew/YOUR_CREW
+cd YOUR_TOWN_ROOT/YOUR_RIG/crew/human
 bd ready                   # should list beads without errors
 gt formula list            # should include mol-idea-to-plan and shiny
 ```
@@ -52,7 +52,7 @@ source ~/.zshrc      # must be .zshrc, NOT .zshenv
 
 Verify shell integration is active:
 ```bash
-cd YOUR_TOWN_ROOT/YOUR_RIG/crew/YOUR_CREW
+cd YOUR_TOWN_ROOT/YOUR_RIG/crew/human
 echo $GT_ROOT     # should show your town root path
 echo $GT_RIG      # should show your rig name
 ```
@@ -122,7 +122,7 @@ Services: daemon (PID 38014)  dolt (:3307)  tmux (7 sessions)
 🦉 witness      ● [claude]
 🏭 refinery     ● [claude]
 👷 Crew (1)
-   YOUR_CREW    ○ [claude]
+   human    ○ [claude]
 ```
 
 ---
@@ -148,19 +148,19 @@ You'll see something like:
 
 For Modules 1-4, you can run `bd create` from any directory *inside* your town. The easiest place is your crew workspace.
 
-> 💡 **YOUR_CREW is your crew name.** This is whatever name you chose when creating your crew workspace (common choices: your name, `workshop`, `crew`). The tutorial uses `YOUR_CREW` as a placeholder throughout. Substitute your actual crew name everywhere you see it.
+> 💡 **This tutorial uses `human` as the crew name.** We recommend using it for the workshop. It reinforces the mental model: crew is where the human works, polecats are the ephemeral agents. If you choose a different crew name, substitute it wherever you see `human` in the commands below.
 
 ```bash
-cd ~/gt/YOUR_RIG/crew/YOUR_CREW
+cd ~/gt/YOUR_RIG/crew/human
 ```
 
-> 💡 **Why the crew directory?** Gas Town detects your identity from your current working directory. Being in `crew/YOUR_CREW` sets `BD_ACTOR=YOUR_RIG/crew/YOUR_CREW` — so beads you create are attributed to you correctly.
+> 💡 **Why the crew directory?** Gas Town detects your identity from your current working directory. Being in `crew/human` sets `BD_ACTOR=YOUR_RIG/crew/human` — so beads you create are attributed to you correctly.
 
 If you don't have a crew workspace yet:
 ```bash
 cd ~/gt
-gt crew add YOUR_CREW --rig YOUR_RIG
-cd ~/gt/YOUR_RIG/crew/YOUR_CREW
+gt crew add human --rig YOUR_RIG
+cd ~/gt/YOUR_RIG/crew/human
 ```
 
 ---
@@ -174,7 +174,7 @@ Error: failed to open database: database "your_rig" not found on Dolt server
 
 Run `bd doctor` to diagnose:
 ```bash
-cd ~/gt/YOUR_RIG/crew/YOUR_CREW
+cd ~/gt/YOUR_RIG/crew/human
 bd doctor | head -20
 ```
 
@@ -190,7 +190,7 @@ Then try `bd create` again.
 ## 8. Confirm Everything Works
 
 ```bash
-cd ~/gt/YOUR_RIG/crew/YOUR_CREW
+cd ~/gt/YOUR_RIG/crew/human
 bd ready
 ```
 
@@ -225,7 +225,7 @@ These are the native Gas Town formulas used in Module 5. If they're missing:
 ## ✅ You're Ready When:
 
 - [ ] `gt enable` + `gt shell install` done, `source ~/.zshrc` run
-- [ ] `cd ~/gt/YOUR_RIG/crew/YOUR_CREW && echo $GT_ROOT` shows `~/gt`
+- [ ] `cd ~/gt/YOUR_RIG/crew/human && echo $GT_ROOT` shows `~/gt`
 - [ ] `gt status` shows Witness + Refinery running for your rig
 - [ ] `bd ready` runs without errors from the crew directory
 - [ ] You know your rig name from `gt rig list`

@@ -29,7 +29,7 @@ Bead: edi-042
   Type: task
   Priority: P2
   Status: open → in_progress → closed
-  created_by: YOUR_RIG/crew/YOUR_CREW
+  created_by: YOUR_RIG/crew/human
 ```
 
 ### 🦡 Polecat
@@ -78,7 +78,7 @@ A **persistent human workspace**. Your git clone where you (or an AI acting as y
 └──────┘  └──────┘  └──────┘
 
          ┌──────────┐
-         │ YOUR_CREW│  ← Crew (persistent, human-managed)
+         │ human│  ← Crew (persistent, human-managed)
          └──────────┘
 ```
 

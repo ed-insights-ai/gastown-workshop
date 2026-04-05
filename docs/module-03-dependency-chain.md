@@ -2,7 +2,7 @@
 
 > **Goal:** Create two beads where B can't start until A finishes. Understand how Gas Town enforces ordering without you managing it.
 
-> **All commands run from:** `~/gt/YOUR_RIG/crew/YOUR_CREW`
+> **All commands run from:** `~/gt/YOUR_RIG/crew/human`
 
 > 💡 **Your bead IDs will differ from these examples.** Gas Town generates unique IDs each time. The examples use names like BEAD_A, BEAD_B, FETCHER_ID, etc. to make it clear where to substitute your actual IDs. Keep a note of each ID as you create beads.
 

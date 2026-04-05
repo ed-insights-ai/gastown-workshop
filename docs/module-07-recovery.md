@@ -145,7 +145,7 @@ Boot Status:
 Create a bead with a long but realistic implementation:
 
 ```bash
-cd ~/gt/YOUR_RIG/crew/YOUR_CREW
+cd ~/gt/YOUR_RIG/crew/human
 bd create "Add request retry logic to fetcher" -t task -p P3 --stdin << 'EOF'
 Add exponential backoff retry to weatherly/fetcher.py.
 

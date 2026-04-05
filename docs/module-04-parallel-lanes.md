@@ -2,7 +2,7 @@
 
 > **Goal:** Sling multiple independent beads simultaneously and watch them execute in parallel. Understand wave computation and when parallelism is safe.
 
-> **All commands run from:** `~/gt/YOUR_RIG/crew/YOUR_CREW`
+> **All commands run from:** `~/gt/YOUR_RIG/crew/human`
 
 ---
 
