@@ -142,7 +142,7 @@ gt mail read 1
 You'll see something like:
 ```
 Subject: PRD Questions: weatherly 5-day forecast
-From: edinsights_ui/claudio
+From: YOUR_RIG/claudio
 
 ## Overall PRD Health: B-
 
@@ -163,7 +163,7 @@ Reply with numbered answers.
 
 **Reply via mail and nudge to continue:**
 ```bash
-gt mail send edinsights_ui/claudio \
+gt mail send YOUR_RIG/claudio \
   --subject "Re: PRD Questions: weatherly 5-day forecast" \
   --reply-to <message-id-from-inbox> \
   --stdin << 'EOF'
@@ -176,7 +176,7 @@ gt mail send edinsights_ui/claudio \
 Proceed to plan generation.
 EOF
 
-gt nudge edinsights_ui/claudio "Answers sent. Proceed with plan generation."
+gt nudge YOUR_RIG/claudio "Answers sent. Proceed with plan generation."
 ```
 
 ---
@@ -221,7 +221,7 @@ Reply: APPROVE / APPROVE WITH NOTES / REVISE
 ```
 
 ```bash
-gt mail send edinsights_ui/claudio \
+gt mail send YOUR_RIG/claudio \
   --subject "Re: Plan Ready for Approval: weatherly 5-day forecast" \
   --reply-to <message-id> \
   --stdin << 'EOF'
@@ -230,7 +230,7 @@ APPROVE
 Proceed to bead creation.
 EOF
 
-gt nudge edinsights_ui/claudio "Approved. Create the beads."
+gt nudge YOUR_RIG/claudio "Approved. Create the beads."
 ```
 
 ---
@@ -246,7 +246,7 @@ Awaiting your next instruction.
 
 Check what was created:
 ```bash
-cd ~/gt/edinsights_ui/crew/claudio
+cd ~/gt/YOUR_RIG/crew/claudio
 bd list | grep -v "wisp\|Patrol\|Refinery"
 ```
 
@@ -334,7 +334,7 @@ gt peek YOUR_RIG/furiosa    # see what step furiosa is on
 For any single bead where you want the full design-implement-review-test-submit lifecycle:
 
 ```bash
-gt sling shiny YOUR_RIG --var feature="edi-042" --var assignee="edinsights_ui/crew/claudio"
+gt sling shiny YOUR_RIG --var feature="edi-042" --var assignee="YOUR_RIG/crew/claudio"
 ```
 
 Or sling a bead to a rig and `shiny` applies automatically via `mol-polecat-work`:
@@ -390,13 +390,13 @@ gt feed
 # Human gates (mail-based)
 gt mail inbox                           # check for questions/approval requests
 gt mail read 1                          # read the message
-gt mail send edinsights_ui/claudio \
+gt mail send YOUR_RIG/claudio \
   --subject "Re: ..." \
   --reply-to <message-id> \
   --stdin << 'EOF'
 your answers here
 EOF
-gt nudge edinsights_ui/claudio "..."    # wake the crew agent to continue
+gt nudge YOUR_RIG/claudio "..."    # wake the crew agent to continue
 
 # After bead creation
 bd list | grep -v "wisp\|Patrol"        # see created beads

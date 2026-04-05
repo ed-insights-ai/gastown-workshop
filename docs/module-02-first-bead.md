@@ -113,7 +113,7 @@ gt convoy status <CONVOY_ID>     # see the convoy details
 
 > 💡 **"Progress: 0/0"?** Don't worry. The convoy shows `0/0` until the bead is actually slung to a polecat. The tracking link is there; the counter activates on dispatch. This is normal.
 
-> 💡 **`--notify`** without an argument defaults to notifying `mayor/`. You can specify an address: `--notify edinsights_ui/crew/claudio` to notify yourself directly.
+> 💡 **`--notify`** without an argument defaults to notifying `mayor/`. You can specify an address: `--notify YOUR_RIG/crew/claudio` to notify yourself directly.
 
 ---
 

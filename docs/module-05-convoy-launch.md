@@ -71,17 +71,17 @@ gt convoy launch <convoy-id>
 Here's real output from staging 4 beads with a dependency graph:
 
 ```
-edi-0dm [task] task B - no deps (rig: edinsights_ui) [open]
-edi-6tq [task] task A - no deps (rig: edinsights_ui) [open]
-edi-77a [task] task C - needs A (rig: edinsights_ui) [open] ← blocked by: edi-6tq
-edi-qn8 [task] task D - needs A+B (rig: edinsights_ui) [open] ← blocked by: edi-0dm, edi-6tq
+edi-0dm [task] task B - no deps (rig: YOUR_RIG) [open]
+edi-6tq [task] task A - no deps (rig: YOUR_RIG) [open]
+edi-77a [task] task C - needs A (rig: YOUR_RIG) [open] ← blocked by: edi-6tq
+edi-qn8 [task] task D - needs A+B (rig: YOUR_RIG) [open] ← blocked by: edi-0dm, edi-6tq
 
 Wave   ID       Title               Rig            Blocked By
 ────────────────────────────────────────────────────────────────
-1      edi-0dm  task B - no deps    edinsights_ui  —
-1      edi-6tq  task A - no deps    edinsights_ui  —
-2      edi-77a  task C - needs A    edinsights_ui  edi-6tq
-2      edi-qn8  task D - needs A+B  edinsights_ui  edi-0dm, edi-6tq
+1      edi-0dm  task B - no deps    YOUR_RIG  —
+1      edi-6tq  task A - no deps    YOUR_RIG  —
+2      edi-77a  task C - needs A    YOUR_RIG  edi-6tq
+2      edi-qn8  task D - needs A+B  YOUR_RIG  edi-0dm, edi-6tq
 
 4 tasks across 2 waves (max parallelism: 2 in wave 1)
 Convoy created: hq-cv-dnxwn (status: staged_ready)
@@ -100,8 +100,8 @@ Wave summary:
   Wave 2: 2 tasks (pending)
 
 Dispatched (Wave 1):
-  ✓ edi-0dm  task B - no deps  (rig: edinsights_ui)
-  ✓ edi-6tq  task A - no deps  (rig: edinsights_ui)
+  ✓ edi-0dm  task B - no deps  (rig: YOUR_RIG)
+  ✓ edi-6tq  task A - no deps  (rig: YOUR_RIG)
 
 Subsequent waves will be dispatched automatically by the daemon as tasks complete.
 ```
@@ -189,21 +189,21 @@ gt convoy stage <FETCHER_ID> <DISPLAY_ID> <CLI_ID> <WIRING_ID> <TEST_PARSER_ID> 
 **You'll see real output like:**
 
 ```
-edi-004 [task] Add weather fetcher (rig: edinsights_ui) [open]
-edi-005 [task] Add terminal display (rig: edinsights_ui) [open]
-edi-006 [task] Add CLI argument parser (rig: edinsights_ui) [open]
-edi-007 [task] Wire weatherly together (rig: edinsights_ui) [open] ← blocked by: edi-003, edi-004, edi-005, edi-006
-edi-008 [task] Add parser unit tests (rig: edinsights_ui) [open] ← blocked by: edi-002, edi-003
-edi-009 [task] Add integration smoke test (rig: edinsights_ui) [open] ← blocked by: edi-007
+edi-004 [task] Add weather fetcher (rig: YOUR_RIG) [open]
+edi-005 [task] Add terminal display (rig: YOUR_RIG) [open]
+edi-006 [task] Add CLI argument parser (rig: YOUR_RIG) [open]
+edi-007 [task] Wire weatherly together (rig: YOUR_RIG) [open] ← blocked by: edi-003, edi-004, edi-005, edi-006
+edi-008 [task] Add parser unit tests (rig: YOUR_RIG) [open] ← blocked by: edi-002, edi-003
+edi-009 [task] Add integration smoke test (rig: YOUR_RIG) [open] ← blocked by: edi-007
 
 Wave   ID       Title                        Rig            Blocked By
 ─────────────────────────────────────────────────────────────────────────────
-1      edi-004  Add weather fetcher           edinsights_ui  —
-1      edi-005  Add terminal display          edinsights_ui  —
-1      edi-006  Add CLI argument parser       edinsights_ui  —
-2      edi-007  Wire weatherly together       edinsights_ui  edi-003..006
-2      edi-008  Add parser unit tests         edinsights_ui  edi-002, edi-003
-3      edi-009  Add integration smoke test    edinsights_ui  edi-007
+1      edi-004  Add weather fetcher           YOUR_RIG  —
+1      edi-005  Add terminal display          YOUR_RIG  —
+1      edi-006  Add CLI argument parser       YOUR_RIG  —
+2      edi-007  Wire weatherly together       YOUR_RIG  edi-003..006
+2      edi-008  Add parser unit tests         YOUR_RIG  edi-002, edi-003
+3      edi-009  Add integration smoke test    YOUR_RIG  edi-007
 
 6 tasks across 3 waves (max parallelism: 3 in wave 1)
 Convoy created: hq-cv-wxyz (status: staged_ready)

@@ -29,7 +29,7 @@ Bead: edi-042
   Type: task
   Priority: P2
   Status: open → in_progress → closed
-  created_by: edinsights_ui/crew/claudio
+  created_by: YOUR_RIG/crew/claudio
 ```
 
 ### 🦡 Polecat
@@ -37,10 +37,10 @@ An **ephemeral worker**. Think: a Claude Code session in a git worktree that pic
 
 ```
 Polecat: Toast
-  Rig: edinsights_ui
+  Rig: YOUR_RIG
   Status: Working
   Hook: edi-042 (Add weather fetcher module)
-  Sandbox: ~/gt/edinsights_ui/polecats/Toast/
+  Sandbox: ~/gt/YOUR_RIG/polecats/Toast/
 ```
 
 ### 🚚 Convoy
@@ -140,11 +140,11 @@ Polecats have three independent layers. Confusing them is a common mistake.
 ┌─────────────────────────────────────────────────────────┐
 │  SLOT (persistent until nuke)                           │
 │  Name: Toast                                            │
-│  Pool entry for edinsights_ui                           │
+│  Pool entry for YOUR_RIG                                │
 │                                                         │
 │  ┌───────────────────────────────────────────────────┐  │
 │  │  SANDBOX (persistent until nuke)                  │  │
-│  │  Path: ~/gt/edinsights_ui/polecats/Toast/         │  │
+│  │  Path: ~/gt/YOUR_RIG/polecats/Toast/              │  │
 │  │  Branch: polecat/Toast/edi-042                    │  │
 │  │  Contains: all committed/staged work              │  │
 │  │                                                   │  │
@@ -174,7 +174,7 @@ There is NO idle state. A non-working polecat is broken.
 You create a bead (bd create)
          │
          ▼
-You sling it (gt sling edi-042 edinsights_ui)
+You sling it (gt sling edi-042 YOUR_RIG)
          │
          ▼
 Witness spawns a polecat (Toast)
@@ -185,7 +185,7 @@ Witness spawns a polecat (Toast)
          │
          ▼
 Toast fires gt prime (via SessionStart hook)
-  → reads its identity (edinsights_ui/polecats/Toast)
+  → reads its identity (YOUR_RIG/polecats/Toast)
   → sees edi-042 on hook
   → EXECUTES IMMEDIATELY (propulsion principle)
          │

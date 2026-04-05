@@ -119,7 +119,7 @@ gt log     # recent town activity log
 
 Look for events like:
 ```
-[21:14:02] witness nudged edinsights_ui/furiosa (idle 8m)
+[21:14:02] witness nudged YOUR_RIG/furiosa (idle 8m)
 [21:14:32] furiosa resumed work on edi-042
 ```
 

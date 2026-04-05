@@ -140,7 +140,7 @@ You'll see something like:
    Polecats: 0  Crew: 1
 ```
 
-**Write this down.** You'll use `YOUR_RIG` as a placeholder throughout the workshop. In the examples below, we use `edinsights_ui` — replace it with your actual rig name.
+**Write this down.** The workshop uses `YOUR_RIG` as a placeholder throughout. Always substitute your actual rig name.
 
 ---
 

@@ -158,7 +158,7 @@ gt mail read 1   # ✅ read by index
 ### `gt mail send`: `--thread` flag doesn't exist
 Use `--reply-to <message-id>` instead:
 ```bash
-gt mail send edinsights_ui/claudio \
+gt mail send YOUR_RIG/claudio \
   --subject "Re: ..." \
   --reply-to hq-wisp-xxxxx \    # message ID from gt mail inbox
   --message "your reply"
@@ -170,7 +170,7 @@ Messages stay in inbox until archived. The newest is always index 1. Use `gt mai
 ### After replying, crew agent doesn't continue
 You need to nudge it. Mail delivery alone doesn't wake the agent:
 ```bash
-gt nudge edinsights_ui/claudio "Answers sent. Continue."
+gt nudge YOUR_RIG/claudio "Answers sent. Continue."
 ```
 
 ---
