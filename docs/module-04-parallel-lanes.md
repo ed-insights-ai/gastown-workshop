@@ -217,13 +217,13 @@ When all three Wave 1 beads close, the ConvoyManager automatically slinging `edi
 
 ```
 t=0                    t≈2min                t≈4min
-│                      │                     │
+│                       │                     │
 ├── furiosa (edi-004) ──┤                     │
 ├── nux     (edi-005) ──┤  edi-007 unblocked  │
 ├── slit    (edi-006) ──┤──── chrome ────────►│ done
-│                      │                     │
-│   WAVE 1             │      WAVE 2          │
-│   (parallel)         │   (sequential)       │
+│                       │                     │
+│   WAVE 1              │      WAVE 2         │
+│   (parallel)          │   (sequential)      │
 ```
 
 **Total ~4 min vs ~8 min sequential. 2x speedup from parallelism.**
