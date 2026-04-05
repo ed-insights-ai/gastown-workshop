@@ -18,6 +18,12 @@ This module walks through that loop with a single bead.
 
 ---
 
+## Why We're Doing This Manually
+
+Your `docs/initial-plan.bead.md` from Module 1 already has ready-to-run `bd create` commands for every bead. You could hand that file to your crew agent and let it create them all at once. And by Module 5, that's exactly what you'll do.
+
+But first, you need to understand what happens inside the core loop. Creating one bead by hand, slinging it, and watching the full cycle gives you the mental model to debug problems and reason about what the automation is doing for you.
+
 ## What We're Building
 
 A Python file: `weatherly/config.py`, a simple configuration module that holds API settings and defaults. Small enough to complete in one polecat session, clear enough to have real acceptance criteria.
@@ -296,6 +302,16 @@ gt peek <rig>/<name>   # watch polecat output (full address required)
 gt feed                # real-time Gas Town event stream
 git log --oneline      # see attributed commits
 ```
+
+---
+
+---
+
+## 📚 Further Reading
+
+- [Polecat Lifecycle](https://docs.gastownhall.ai/concepts/polecat-lifecycle/) — slot, sandbox, and session layers
+- [Convoys](https://docs.gastownhall.ai/concepts/convoy/) — how convoy tracking works under the hood
+- [Work Management Commands](https://docs.gastownhall.ai/usage/work-management/) — full `bd` and `gt sling` reference
 
 ---
 

@@ -175,37 +175,17 @@ gt convoy create "weatherly full implementation" \
 
 ---
 
-## Step 5: Stage It — See the Waves
+## Step 5: Sling and Watch Three Polecats Work in Parallel
+
+Sling the three independent beads:
 
 ```bash
-gt convoy stage edi-004 edi-005 edi-006 edi-007
+gt sling edi-004 YOUR_RIG_NAME
+gt sling edi-005 YOUR_RIG_NAME
+gt sling edi-006 YOUR_RIG_NAME
 ```
 
-Real output will look like:
-
-```
-Wave   ID       Title                        Rig            Blocked By
-─────────────────────────────────────────────────────────────────────────────
-1      edi-004  Add weather fetcher           YOUR_RIG       —
-1      edi-005  Add terminal display          YOUR_RIG       —
-1      edi-006  Add CLI argument parser       YOUR_RIG       —
-2      edi-007  Wire weatherly together       YOUR_RIG       edi-003..006
-
-3 tasks across 2 waves (max parallelism: 3 in wave 1)
-Convoy created: hq-cv-xxxx (status: staged_ready)
-```
-
----
-
-## Step 6: Launch
-
-```bash
-gt convoy launch hq-cv-xxxx
-```
-
----
-
-## Step 7: Watch Three Polecats Work in Parallel
+> 💡 **Why sling manually here?** We're learning what parallel execution looks like. In Module 5, you'll use `gt convoy stage` and `gt convoy launch` to automate this. But first, see it with your own eyes.
 
 ```bash
 gt polecat list YOUR_RIG_NAME
@@ -263,10 +243,19 @@ t=0                    t≈2min                t≈4min
 ## 📝 What You've Mastered So Far
 
 ```
-Module 1: Single bead → polecat → done (the core loop)
-Module 2: A → B (dependency chain, ConvoyManager auto-dispatches B)
-Module 3: A+B+C → D (parallel Wave 1, auto-launches Wave 2)
+Module 2: Single bead → polecat → done (the core loop)
+Module 3: A → B (dependency chain, ConvoyManager auto-dispatches B)
+Module 4: A+B+C → D (parallel Wave 1, auto-launches Wave 2)
 ```
+
+---
+
+---
+
+## 📚 Further Reading
+
+- [Convoys](https://docs.gastownhall.ai/concepts/convoy/) — convoy vs swarm, lifecycle states
+- [Gas Town Architecture](https://docs.gastownhall.ai/design/architecture/) — how the ConvoyManager feeds waves
 
 ---
 

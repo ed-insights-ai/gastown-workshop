@@ -317,4 +317,14 @@ cat docs/initial-plan.bead.md
 
 ---
 
+---
+
+## 📚 Further Reading
+
+- [Molecules](https://docs.gastownhall.ai/concepts/molecules/) — how Gas Town structures multi-step workflows
+- [Why These Features?](https://docs.gastownhall.ai/other/why-these-features/) — why accountability and traceability matter at scale
+- [Plugin System Design](https://docs.gastownhall.ai/design/plugin-system/) — how plugins like `gt-sdlc` integrate with Gas Town
+
+---
+
 ## Next: [Module 2 — Your First Bead →](module-02-first-bead.md)

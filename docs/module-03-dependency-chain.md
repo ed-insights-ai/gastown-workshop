@@ -6,6 +6,12 @@
 
 ---
 
+## Why We're Still Doing This Manually
+
+Like Module 2, we're creating beads by hand here to learn how dependency enforcement works. Your Module 1 plan already has the dep structure mapped out. Understanding the mechanics now means you can confidently read convoy wave plans later.
+
+---
+
 ## The Problem Dependency Chains Solve
 
 Imagine you need to:
@@ -230,6 +236,15 @@ bd dep add <blocked> <blocker>   # declare dependency
 bd dep cycles                     # verify no circular deps
 bd ready                          # see what's unblocked right now
 ```
+
+---
+
+---
+
+## 📚 Further Reading
+
+- [Convoy Lifecycle Design](https://docs.gastownhall.ai/design/convoy-lifecycle/) — how the ConvoyManager auto-dispatches on bead close
+- [Work Management Commands](https://docs.gastownhall.ai/usage/work-management/) — `bd dep add`, `bd dep cycles`, and more
 
 ---
 

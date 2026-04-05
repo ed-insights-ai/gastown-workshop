@@ -4,6 +4,14 @@
 
 ---
 
+## How This Relates to Module 1
+
+In Module 1, you used the `gt-sdlc` Claude Code plugin to create a brief, design, and bead plan interactively. That's a human-driven workflow: you sit in a Claude Code session and the plugin guides you through product thinking.
+
+This module uses `mol-idea-to-plan`, Gas Town's **native formula**. It does similar work (idea to beads) but runs as a Gas Town workflow with mail-based human gates, parallel review polecats, and automatic bead creation. Think of it as the difference between driving stick (Module 1) and automatic (Module 6). Both get you there. Module 1 teaches the thinking. This module shows how Gas Town automates it at scale.
+
+---
+
 ## Two Workflows, One Pipeline
 
 Gas Town ships with two key formulas that handle the full lifecycle:
@@ -396,6 +404,17 @@ gt convoy stage <epic-id>               # validate + wave plan
 gt convoy launch <convoy-id>            # kick off implementation
 gt convoy -i                            # watch progress
 ```
+
+---
+
+---
+
+## 📚 Further Reading
+
+- [Molecules](https://docs.gastownhall.ai/concepts/molecules/) — how formulas define multi-step workflows
+- [Gas Town Mail Protocol](https://docs.gastownhall.ai/design/mail-protocol/) — inter-agent communication for human gates
+- [Communication Commands](https://docs.gastownhall.ai/usage/communication/) — `gt mail`, `gt nudge` CLI reference
+- [Agent Management Commands](https://docs.gastownhall.ai/usage/agent-management/) — `gt crew`, `gt polecat` CLI reference
 
 ---
 

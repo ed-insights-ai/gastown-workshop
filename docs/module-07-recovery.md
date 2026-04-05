@@ -296,8 +296,19 @@ Build thoughtfully. Launch confidently. Walk away while the swarm works.
 
 ---
 
+---
+
+## 📚 Further Reading
+
+- [Daemon/Boot/Deacon Watchdog Chain](https://docs.gastownhall.ai/design/watchdog-chain/) — how automatic health monitoring works
+- [Escalation System Design](https://docs.gastownhall.ai/design/escalation-system/) — what happens when you `gt escalate`
+- [Gas Town Escalation Protocol](https://docs.gastownhall.ai/design/escalation/) — escalation paths reference
+- [Diagnostics Commands](https://docs.gastownhall.ai/usage/diagnostics/) — `gt doctor`, `gt status`, `gt orphans` reference
+- [Towers of Hanoi Demo](https://docs.gastownhall.ai/examples/hanoi-demo/) — a durability proof showing crash recovery in action
+
+---
+
 ## Appendix
 
-- [A. Quick Reference Card](appendix-quick-reference.md)
-- [B. Bead Quality Rules](appendix-bead-quality.md) *(coming soon)*
-- [C. Common Errors & Fixes](appendix-common-errors.md)
+- [Quick Reference Card](appendix-quick-reference.md)
+- [Common Errors & Fixes](appendix-common-errors.md)

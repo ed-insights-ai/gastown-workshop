@@ -229,4 +229,15 @@ These are the native Gas Town formulas used in Module 5. If they're missing:
 - [ ] You know your rig name from `gt rig list`
 - [ ] `gt formula list` shows `mol-idea-to-plan` and `shiny`
 
+---
+
+## 📚 Further Reading
+
+- [Installing Gas Town](https://docs.gastownhall.ai/installing/) — official installation guide
+- [Configuration Commands](https://docs.gastownhall.ai/usage/configuration/) — `gt enable`, `gt shell`, property layers
+- [Workspace Commands](https://docs.gastownhall.ai/usage/workspace/) — `gt rig`, `gt crew` setup reference
+- [Services Commands](https://docs.gastownhall.ai/usage/services/) — `gt up`, `gt dolt`, daemon management
+
+---
+
 **→ [Module 0: The Mental Model](module-00-mental-model.md)**

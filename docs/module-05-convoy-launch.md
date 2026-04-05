@@ -6,6 +6,26 @@
 
 ---
 
+## Connecting Back to Your Plan
+
+In Modules 2-4, you created beads by hand to learn the mechanics. But your `docs/initial-plan.bead.md` from Module 1 already had all of this mapped out.
+
+Now that you understand beads, dependencies, and parallel waves, you can let automation do the heavy lifting. You have two options:
+
+1. **Run the plan yourself:** Copy the `bd create` commands from `docs/initial-plan.bead.md` and paste them into your shell
+2. **Let your crew agent do it:** Open a crew session and ask it to read the plan and execute the bead creation commands
+
+```bash
+# Option 2: crew agent reads your plan and creates beads
+gt crew at claudio
+# Then inside the session:
+# "Read docs/initial-plan.bead.md and run all the bd create and bd dep add commands in it."
+```
+
+Either way, you end up with beads and deps in the system. What matters next is **validating the wave plan before anything runs**.
+
+---
+
 ## The Problem with Slinging Directly
 
 When you `gt sling` directly without staging, you're flying blind:
@@ -316,6 +336,16 @@ gt rig status YOUR_RIG         # rig-level view of all workers
 bd audit --actor=RIG/polecats/* # full attribution history
 bd stats --actor=...           # performance metrics
 ```
+
+---
+
+---
+
+## 📚 Further Reading
+
+- [Convoys](https://docs.gastownhall.ai/concepts/convoy/) — convoy lifecycle, stranded detection
+- [Convoy Lifecycle Design](https://docs.gastownhall.ai/design/convoy-lifecycle/) — how wave computation (Kahn's sort) works internally
+- [Work Management Commands](https://docs.gastownhall.ai/usage/work-management/) — full `gt convoy` CLI reference
 
 ---
 

@@ -228,4 +228,16 @@ Answers: *(1) Sandbox = git worktree, persists; Session = Claude instance, ephem
 
 ---
 
+---
+
+## 📚 Further Reading
+
+- [Understanding Gas Town](https://docs.gastownhall.ai) — conceptual overview of the architecture
+- [Gas Town Glossary](https://docs.gastownhall.ai/glossary/) — complete terminology reference
+- [The Propulsion Principle](https://docs.gastownhall.ai/concepts/propulsion-principle/) — deep dive on the core behavioral rule
+- [Polecat Lifecycle](https://docs.gastownhall.ai/concepts/polecat-lifecycle/) — the three-layer architecture explained
+- [Agent Identity and Attribution](https://docs.gastownhall.ai/concepts/identity/) — how Gas Town tracks who did what
+
+---
+
 ## Next: [Module 1 — Idea to Beads →](module-01-idea-to-beads.md)
