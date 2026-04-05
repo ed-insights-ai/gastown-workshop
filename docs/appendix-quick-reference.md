@@ -60,7 +60,7 @@ gt convoy stranded               # work queued, nothing running
 
 ```bash
 gt sling <bead-id> <rig>                     # assign to polecat
-gt sling <bead-id> <rig> --model claude-sonnet
+gt sling <bead-id> <rig> --agent claude-sonnet
 gt polecat list <rig>                        # active polecats (POSITIONAL, no --rig flag)
 gt peek <rig>/<name>                         # see polecat output (FULL ADDRESS required)
 gt polecat nuke <name>                       # destroy polecat
@@ -92,7 +92,7 @@ bd close <step> --continue       # close step + auto-advance
 gt status                        # overall health
 gt feed                          # real-time activity feed
 gt rig status <rig>              # rig-level view
-gt polecat list --rig <rig>      # active polecats
+gt polecat list <rig>            # active polecats (positional, no --rig)
 gt doctor                        # health checks
 gt doctor --fix                  # auto-fix
 tmux list-sessions               # ground truth
@@ -104,7 +104,10 @@ bd stats --actor=...             # performance metrics
 
 ```bash
 gt nudge <actor> "message"       # lightweight (no bead created)
-gt mail send <actor> "message"   # persistent (creates bead)
+gt mail send <actor> -s "subject" --stdin << 'EOF'
+message body
+EOF
+                                 # persistent (creates bead)
 gt broadcast "message"           # nudge all workers
 gt escalate -s HIGH "..."        # escalate to Mayor
 ```

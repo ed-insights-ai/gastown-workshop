@@ -72,8 +72,8 @@ Output format (example):
   🌬  Wind: 18 km/h NW
   ☁   Partly cloudy
 
-Use Unicode emoji for visual appeal. No external libraries required (just
-print statements).
+Use the rich library (added in Module 2's config bead) for styled terminal
+output. Use Unicode emoji for visual appeal.
 EOF
 ```
 
@@ -81,6 +81,7 @@ EOF
 bd update <DISPLAY_ID> --acceptance "- [ ] File exists at weatherly/display.py
 - [ ] display_weather function defined
 - [ ] Outputs all WeatherData fields with emoji labels
+- [ ] Uses rich for terminal formatting
 - [ ] No import errors"
 ```
 

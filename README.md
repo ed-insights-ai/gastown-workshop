@@ -2,6 +2,8 @@
 
 A hands-on workshop for learning Gas Town, a system for orchestrating multiple AI agents to build and ship code.
 
+> 📌 **Tested against:** `gt 1.0.0` / `bd 0.63.3` (April 2026). If you're on a different version, some commands or flags may differ. Run `gt --version` and `bd --version` to check.
+
 ## What is Gas Town?
 
 Gas Town is a system for coordinating multiple AI agents to design, build, and ship code through structured workflows.

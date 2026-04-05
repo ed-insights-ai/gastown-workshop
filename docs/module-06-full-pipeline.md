@@ -53,7 +53,7 @@ Everything else is autonomous.
 
 ## The `shiny` Formula: What Polecats Actually Do
 
-Every bead a polecat picks up runs the `shiny` formula under the hood ("Engineer in a Box"):
+Every bead a polecat picks up runs `mol-polecat-work` by default, which includes the `shiny` formula ("Engineer in a Box"):
 
 ```
 design     → think about architecture, write design doc
@@ -63,7 +63,7 @@ test       → write and run tests, fix regressions
 submit     → final check, commit, push to feature branch
 ```
 
-This is why polecats consistently produce better output than raw "write this code" instructions. They're following a structured workflow with acceptance criteria at each step. You can also sling `shiny` directly to a polecat for any single bead.
+This is why polecats consistently produce better output than raw "write this code" instructions. They're following a structured workflow with acceptance criteria at each step.
 
 ---
 
@@ -334,16 +334,17 @@ gt peek YOUR_RIG/furiosa    # see what step furiosa is on
 
 ## Running `shiny` Directly on a Single Bead
 
-For any single bead where you want the full design-implement-review-test-submit lifecycle:
+To apply the `shiny` formula explicitly to a specific bead:
 
 ```bash
-gt sling shiny YOUR_RIG --var feature="edi-042" --var assignee="YOUR_RIG/crew/human"
+gt sling shiny --on <BEAD_ID> YOUR_RIG
 ```
 
-Or sling a bead to a rig and `shiny` applies automatically via `mol-polecat-work`:
+But in most cases you don't need to do this. When you sling a bead normally, `mol-polecat-work` applies automatically and includes `shiny`:
+
 ```bash
-gt sling edi-042 YOUR_RIG
-# shiny runs automatically as part of mol-polecat-work
+gt sling <BEAD_ID> YOUR_RIG
+# mol-polecat-work (including shiny) runs automatically
 ```
 
 ---

@@ -119,11 +119,11 @@ gt log     # recent town activity log
 
 Look for events like:
 ```
-[21:14:02] witness nudged YOUR_RIG/furiosa (idle 8m)
+[21:14:02] witness nudged YOUR_RIG/furiosa (no output 8m)
 [21:14:32] furiosa resumed work on edi-042
 ```
 
-The Witness polls polecats every ~3 minutes. If a polecat is idle without having called `gt done`, it gets nudged.
+The Witness polls polecats every ~3 minutes. If a polecat has no output for an extended period without having called `gt done`, it gets nudged.
 
 ### Check What the Daemon is Doing
 

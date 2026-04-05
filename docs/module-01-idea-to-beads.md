@@ -55,7 +55,7 @@ claude
 
 Once installed, you'll run `/gt-sdlc:brief`, `/gt-sdlc:design`, and `/gt-sdlc:plan` from inside Claude Code to generate the markdown artifacts that Gas Town will later execute.
 
-> 📋 **These files live in your crew workspace, not in the repo.** The plugin writes them to `docs/` in your working directory. They're *your* artifacts, the decisions you made for your version of weatherly.
+> 📋 **These files live in your crew workspace, not in the tutorial repo.** The plugin writes them to `docs/` in your crew working directory. They're *your* artifacts, the decisions you made for your version of weatherly. Keep them separate from the authored workshop content.
 
 ---
 

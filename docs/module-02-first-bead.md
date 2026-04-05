@@ -106,7 +106,9 @@ This shows all beads with no unresolved blockers, things that can be picked up r
 
 ## Step 4: Create a Convoy
 
-Before slinging, create a convoy so you can track this work:
+Before slinging, create a convoy so you can track this work.
+
+> 💡 **Note:** `gt sling` auto-creates a convoy for single beads unless you pass `--no-convoy`. We're creating one manually here to learn how convoys work and to give it a meaningful name.
 
 ```bash
 gt convoy create "weatherly config module" <BEAD_ID> --notify
@@ -142,9 +144,9 @@ Replace `YOUR_RIG_NAME` with your actual rig name from above.
 **Expected output (yours will look similar):**
 ```
 Target is rig 'YOUR_RIG', spawning fresh polecat...
-Created polecat: furiosa           ← if no idle polecats available
+Created polecat: furiosa           ← spawns a fresh polecat
   (or)
-Reusing idle polecat: furiosa      ← if an idle polecat exists
+Reusing polecat: furiosa           ← if an available slot exists
 ✓ Polecat furiosa spawned (or reused)
 🎯 Slinging edi-001 to YOUR_RIG/polecats/furiosa...
 ○ Already tracked by convoy hq-cv-abc
