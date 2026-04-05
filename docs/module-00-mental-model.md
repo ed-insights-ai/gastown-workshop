@@ -2,6 +2,8 @@
 
 > **Goal:** Understand how Gas Town thinks before touching a single command.
 
+You won't run any commands in this module. You'll build a mental model of how Gas Town works so everything in later modules makes sense.
+
 ---
 
 ## The Core Idea
@@ -16,7 +18,7 @@ This isn't just tracking. It's the foundation for routing, debugging, and qualit
 
 ## The Vocabulary
 
-Before anything else, lock in these five terms:
+Before anything else, get familiar with these five core terms:
 
 ### 🪨 Bead
 A unit of work. Like a GitHub issue, but richer — it has type, priority, acceptance criteria, dependencies, and attribution. Beads live in a **Dolt** (version-controlled SQL) database.
@@ -45,7 +47,7 @@ Polecat: Toast
 A **tracking unit** for batched work. When you kick off multiple related beads, a convoy lets you see them all in one place and get notified when they all land.
 
 ### 🧪 Molecule
-A **structured workflow** — a formula that defines multiple steps with dependencies. Instead of a polecat just getting "do this task," it gets "do step 1, then step 2, then step 3." The molecule tracks progress through the steps.
+A **structured workflow** — a formula that defines multiple steps with dependencies. Think of it like a mini pipeline: instead of a polecat just getting "do this task," it gets "do step 1, then step 2, then step 3." The molecule tracks progress through the steps.
 
 ### 👤 Crew
 A **persistent human workspace**. Your git clone where you (or an AI acting as you) do exploratory work, run interactive pipelines, and make judgment calls.
@@ -107,7 +109,7 @@ A **persistent human workspace**. Your git clone where you (or an AI acting as y
 
 ## The Propulsion Principle
 
-This is the most important behavioral rule in Gas Town:
+This is the most important rule in Gas Town:
 
 > **If you find something on your hook, YOU RUN IT.**
 
@@ -212,9 +214,9 @@ ConvoyManager detects bead closed (5-second poll)
 
 ---
 
-## ✅ Check Your Understanding
+## ✅ Quick Self-Check
 
-Before moving on, answer these:
+If you can answer these, you're ready for Module 1:
 
 1. What's the difference between a sandbox and a session?
 2. Why don't polecats need monitoring by the user?
