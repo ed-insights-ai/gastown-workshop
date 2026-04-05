@@ -36,7 +36,7 @@ Let's trace how it becomes one.
 
 ## Before You Start This Module
 
-This module uses **Claude Code slash commands**, not normal shell commands. The `gt-sdlc` commands only work from within an active Claude Code session.
+This module uses **Claude Code slash commands**, not normal shell commands. The `/brief`, `/design`, and `/plan` commands only work from within an active Claude Code session.
 
 **Where to run it:** Your Gas Town crew workspace. This is where you do human-directed, exploratory work before slinging beads.
 
@@ -46,16 +46,9 @@ cd ~/gt/YOUR_RIG/crew/YOUR_NAME
 claude
 ```
 
-**Plugin setup (one-time, if not done already):** Run these from inside Claude Code:
+The slash commands ship with this repo in `.claude/commands/`. No plugin installation needed. They're available automatically when you open Claude Code in your fork's directory.
 
-```
-/plugin marketplace add https://github.com/danielscholl/claude-sdlc
-/plugin install gt-sdlc
-```
-
-Once installed, you'll run `/gt-sdlc:brief`, `/gt-sdlc:design`, and `/gt-sdlc:plan` from inside Claude Code to generate the markdown artifacts that Gas Town will later execute.
-
-> 📋 **These files live in your crew workspace, not in the tutorial repo.** The plugin writes them to `docs/` in your crew working directory. They're *your* artifacts, the decisions you made for your version of weatherly. Keep them separate from the authored workshop content.
+> 📋 **These files live in your crew workspace, not in the tutorial repo.** The command writes them to `docs/` in your crew working directory. They're *your* artifacts, the decisions you made for your version of weatherly. Keep them separate from the authored workshop content.
 
 ---
 
@@ -63,24 +56,24 @@ Once installed, you'll run `/gt-sdlc:brief`, `/gt-sdlc:design`, and `/gt-sdlc:pl
 
 A brief answers: what, for who, and what does success look like. No implementation details. Those belong in design.
 
-### Running the plugin
+### Running the command
 
 ```bash
-/gt-sdlc:brief "a terminal weather dashboard, one command, no config"
+/brief "a terminal weather dashboard, one command, no config"
 ```
 
-> ⚡ **What to expect:** The plugin doesn't just write a file. It interviews you. Expect 3–5 exchanges where it asks about your motivation, scope, constraints, and success criteria. It synthesizes your answers into a structured brief, then asks you to approve before writing.
+> ⚡ **What to expect:** The command doesn't just write a file. It interviews you. Expect 3–5 exchanges where it asks about your motivation, scope, constraints, and success criteria. It synthesizes your answers into a structured brief, then asks you to approve before writing.
 
 ### What the conversation feels like
 
-The plugin's output isn't deterministic. It adapts to what you say. But the *shape* of the conversation is consistent. Here's roughly how it goes:
+The command's output isn't deterministic. It adapts to what you say. But the *shape* of the conversation is consistent. Here's roughly how it goes:
 
 1. **Brain dump:** it asks you to describe the idea in your own words. What sparked it, what you're picturing, what "no config" means to you.
 2. **Clarifying questions:** it identifies gaps: what happens with no arguments? What about units? What's explicitly *not* in v1?
 3. **Scope fences:** it confirms what's in and what's out, so the brief has clear boundaries.
 4. **Draft and review:** it writes a structured brief and asks if you're happy before saving.
 
-Your exact questions will differ, but the flow is always: **your idea → targeted gaps → scope agreement → written artifact**. **The plugin is doing product thinking *with* you, not for you.** Every answer you give becomes a constraint that shapes decisions downstream.
+Your exact questions will differ, but the flow is always: **your idea → targeted gaps → scope agreement → written artifact**. **The command is doing product thinking *with* you, not for you.** Every answer you give becomes a constraint that shapes decisions downstream.
 
 > 💡 **Why this matters:** If you'd said "Celsius default" here, it would cascade. The design doc, bead bodies, and test expectations all change. The brief is the root of the decision tree.
 
@@ -120,11 +113,11 @@ Before moving on, make sure your brief:
 The design answers: *how* will it work? This is where you make decisions: data sources, dependencies, failure modes, module shape. Each decision produces a **concrete value** that will appear verbatim in a bead body.
 
 ```bash
-# With the plugin (reads brief, interactive decision elicitation):
-/gt-sdlc:design
+# With the command (reads brief, interactive decision elicitation):
+/design
 
 # Fast mode:
-/gt-sdlc:design --yolo
+/design --yolo
 ```
 
 > ⚠️ **Use `--yolo` only if you already understand the tradeoffs.** For this workshop, the interactive path is better because the decision trail is part of what you're learning.
@@ -206,11 +199,11 @@ Before moving on, make sure your design:
 With decisions made and architecture clear, you can decompose into beads. One module = one bead. The design's dependency structure tells you the order.
 
 ```bash
-# With the plugin (reads design.md, produces full bd create commands):
-/gt-sdlc:plan docs/design.md
+# With the command (reads design.md, produces full bd create commands):
+/plan docs/design.md
 
 # Or for a smaller work item without a design doc:
-/gt-sdlc:plan "add --forecast flag to show 5-day instead of 3-day"
+/plan "add --forecast flag to show 5-day instead of 3-day"
 ```
 
 Output: `docs/initial-plan.bead.md`
@@ -277,9 +270,9 @@ The polecat never had to guess. Every literal value in the bead was decided by a
 
 ---
 
-## Manual vs Plugin
+## Manual vs Slash Commands
 
-You don't need the `gt-sdlc` plugin. The documents it produces are just markdown files. You can write them by hand. The plugin speeds up the elicitation, but the *thinking* is the same either way.
+You don't need the slash commands. The documents they produce are just markdown files. You can write them by hand. The commands speed up the elicitation, but the *thinking* is the same either way.
 
 What matters is that the documents exist **before** you write the first bead. Not as a formality, but as a decision record. Six weeks from now when a polecat touches fetcher.py, it will read the design doc and know exactly why `DEFAULT_UNITS = 'fahrenheit'` instead of `'metric'`.
 
@@ -292,7 +285,7 @@ You should now have these files in `docs/` in your current crew workspace:
 - `docs/design.md`: key decisions with concrete impacts, architecture, bead breakdown
 - `docs/initial-plan.bead.md`: ready-to-run `bd create` commands
 
-> 📋 **Staying on track:** The rest of the tutorial assumes the core weatherly constraints: zero config, wttr.in, Fahrenheit default with `--celsius` flag. As long as your plugin output kept those, you're good.
+> 📋 **Staying on track:** The rest of the tutorial assumes the core weatherly constraints: zero config, wttr.in, Fahrenheit default with `--celsius` flag. As long as your output kept those, you're good.
 
 Take a few minutes to read them before moving on. The next module executes the first bead from that plan, and understanding where it came from is the point.
 
@@ -312,11 +305,11 @@ cat docs/initial-plan.bead.md
 | Design | How + what decisions | `docs/design.md` |
 | Bead plan | What units of work | `docs/initial-plan.bead.md` |
 
-**Plugin commands (if installed):**
+**Slash commands:**
 ```bash
-/gt-sdlc:brief "your idea"      # guided brief → docs/product-brief.md
-/gt-sdlc:design                 # reads brief → docs/design.md
-/gt-sdlc:plan docs/design.md    # reads design → docs/initial-plan.bead.md
+/brief "your idea"      # guided brief → docs/product-brief.md
+/design                 # reads brief → docs/design.md
+/plan docs/design.md    # reads design → docs/initial-plan.bead.md
 ```
 
 ---
@@ -327,7 +320,7 @@ cat docs/initial-plan.bead.md
 
 - [Molecules](https://docs.gastownhall.ai/concepts/molecules/) — how Gas Town structures multi-step workflows
 - [Why These Features?](https://docs.gastownhall.ai/other/why-these-features/) — why accountability and traceability matter at scale
-- [Plugin System Design](https://docs.gastownhall.ai/design/plugin-system/) — how plugins like `gt-sdlc` integrate with Gas Town
+- [Gas Town Reference](https://docs.gastownhall.ai/reference/) — technical reference for Gas Town internals
 
 ---
 

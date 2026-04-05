@@ -71,20 +71,10 @@ You'll build **weatherly**, a CLI weather dashboard in Python. It's small enough
 - `bd` and `gt` CLIs in your PATH
 - Claude Code authenticated (`claude --version` works)
 - **Your own fork of this repo** under an org or account you can push to
-- The `gt-sdlc` Claude Code plugin installed (see below)
 
-### Install the gt-sdlc Plugin
+### Slash Commands (Included)
 
-This workshop uses the `gt-sdlc` slash commands for the brief → design → plan pipeline in Module 1. Install it once before starting:
-
-Open Claude Code (run `claude` in your terminal), then run these slash commands from within it:
-
-```
-/plugin marketplace add https://github.com/danielscholl/claude-sdlc
-/plugin install gt-sdlc
-```
-
-Verify by running `/gt-sdlc:brief` inside Claude Code. You should see the command prompt.
+This repo ships with `/brief`, `/design`, and `/plan` slash commands in `.claude/commands/`. When you open Claude Code in your fork's directory, they're available automatically. No plugin installation needed.
 
 ## Repo Ownership Assumption
 
