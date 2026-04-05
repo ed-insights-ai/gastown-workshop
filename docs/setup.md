@@ -4,6 +4,28 @@
 
 ---
 
+## Quick Setup (Experienced Users)
+
+If you already know your way around Gas Town:
+
+```bash
+cd YOUR_TOWN_ROOT          # e.g. ~/gt
+gt enable
+gt shell install
+source ~/.zshrc
+
+gt up
+gt status                  # mayor + deacon + witness + refinery running
+
+cd YOUR_TOWN_ROOT/YOUR_RIG/crew/claudio
+bd ready                   # should list beads without errors
+gt formula list            # should include mol-idea-to-plan and shiny
+```
+
+If anything fails, follow the full setup below.
+
+---
+
 ## 1. Find Your Town Root & Enable Shell Integration
 
 First — confirm where your Gas Town town root actually is. It's not always `~/gt`:
@@ -35,20 +57,20 @@ echo $GT_ROOT     # should show your town root path
 echo $GT_RIG      # should show your rig name
 ```
 
-If those are empty, open a fresh terminal and `cd` back in.
+If those are empty, open a new terminal and `cd` back into the directory.
 
 ---
 
 ## 2. Verify the Basics
 
-All Gas Town commands must run from inside your town root (`~/gt`) or a crew/polecat workspace inside it. Running from your project repo (`~/source/...`) won't work.
+All Gas Town commands must run from inside your town root (`~/gt`) or a crew/polecat workspace inside it. Running from your project repo (`~/source/...`) will NOT work — Gas Town commands must run inside the town.
 
 ```bash
 cd ~/gt
 gt doctor
 ```
 
-You'll likely see some warnings — that's normal. What you need to NOT see:
+You may see warnings — that's normal. What you need to NOT see:
 - `✖ dolt-binary` (Dolt not installed)
 - `✖ beads-binary` (bd not installed)
 - Anything about Claude Code not found
@@ -189,7 +211,10 @@ mol-polecat-work   Full polecat work lifecycle from assignment through completio
 shiny              Engineer in a Box - design before you code, review before you ship
 ```
 
-These are the native Gas Town formulas used in Module 5. If they're missing, you may have an older version of Gas Town — run `gt stale` to check.
+These are the native Gas Town formulas used in Module 5. If they're missing:
+- Run `gt stale` to check for updates
+- Update Gas Town if a newer version is available
+- Restart with `gt down && gt up`
 
 > 💡 **gt-toolkit (optional):** The community repo [Xexr/gt-toolkit](https://github.com/Xexr/gt-toolkit) has additional formulas including a more elaborate multi-LLM spec pipeline. It's worth exploring after you've completed this workshop, but it's not required — we use native formulas throughout.
 
